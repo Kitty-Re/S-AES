@@ -1,0 +1,106 @@
+[
+  {
+    "id": "E001",
+    "name": "15位二进制明文",
+    "api": "parse_word",
+    "input": {
+      "text": "000000000000000",
+      "base": "binary"
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E002",
+    "name": "17位二进制明文",
+    "api": "parse_word",
+    "input": {
+      "text": "00000000000000000",
+      "base": "binary"
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E003",
+    "name": "二进制含2",
+    "api": "parse_word",
+    "input": {
+      "text": "0000000000000002",
+      "base": "binary"
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E004",
+    "name": "十六进制含G",
+    "api": "parse_word",
+    "input": {
+      "text": "123G",
+      "base": "hex"
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E005",
+    "name": "单次密钥超范围",
+    "api": "encrypt_block",
+    "input": {
+      "plaintext_hex": "0000",
+      "key_integer": 65536
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E006",
+    "name": "非ASCII明文",
+    "api": "ascii_bytes",
+    "input": {
+      "text": "中文"
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E007",
+    "name": "奇数字节关闭填充",
+    "api": "crypt_bytes",
+    "input": {
+      "plaintext_hex": "41",
+      "keys_hex": [
+        "2D55"
+      ],
+      "padding": "none"
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E008",
+    "name": "CBC IV超范围",
+    "api": "cbc_encrypt",
+    "input": {
+      "plaintext_hex": "4142",
+      "key_hex": "2D55",
+      "iv_integer": 65536
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E009",
+    "name": "CBC密文未对齐",
+    "api": "cbc_decrypt",
+    "input": {
+      "ciphertext_hex": "001122",
+      "key_hex": "2D55",
+      "iv_hex": "CAFE",
+      "padding": "none"
+    },
+    "expected": "reject_input"
+  },
+  {
+    "id": "E010",
+    "name": "空的中间相遇输入",
+    "api": "meet_in_middle",
+    "input": {
+      "pairs": []
+    },
+    "expected": "reject_input"
+  }
+]

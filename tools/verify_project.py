@@ -26,6 +26,7 @@ from saes_app.services.formats import to_blocks
 from saes_app.services.multiple import decrypt_multiple, encrypt_multiple
 from saes_app.services.text_cipher import decrypt_text, encrypt_text
 from tests.reference import encrypt as reference_encrypt
+from tools.verify_cross_test import run_bundle
 
 
 def save_json(path, value):
@@ -109,6 +110,9 @@ def main():
                                    "restored": cbc_restored.decode(), "tamper_index": 0, "xor_mask": "0001",
                                    "rows": [asdict(row) for row in tampered]})
 
+    cross_test, _ = run_bundle(output=ROOT / "docs/evidence/cross-test")
+    assert cross_test["passed"] == cross_test["result_rows"] and cross_test["not_run"] == 0
+
     import PySide6
     from PySide6.QtCore import qVersion
     source_pdf = ROOT / "docs" / "reference" / "附录D 简化AES.pdf"
@@ -119,7 +123,8 @@ def main():
                          "skipped": len(test_result.skipped), "elapsed_seconds": test_elapsed},
                "coverage": {"all_blocks_one_key": 65536, "all_keys_one_block": 65536,
                             "independent_reference_pairs": 4096, "full_key_block_space_tested": False},
-               "cross_group_testing": "deferred_by_user", "members": [],
+               "cross_group_testing": "passed_peer_dataset", "members": [],
+               "cross_test": {name: cross_test[name] for name in ("case_total", "result_rows", "passed", "failed", "basic_vectors", "basic_passed")},
                "ascii": ascii_result, "multiple": multiple, "mitm": attacks,
                "cbc": {"iv_hex": "1234", "ciphertext_hex": cbc_cipher.hex(" ").upper(),
                        "tamper_plaintext_xor": [f"{row.xor_difference:04X}" for row in tampered]},

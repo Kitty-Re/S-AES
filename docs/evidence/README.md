@@ -1,18 +1,35 @@
 # 实验材料索引
 
-所有数值由程序实际运行得到。`results` 为脚本记录，`screenshots` 为真实 Qt 窗口截图；二者在不同次运行中计时，候选和密文应一致，耗时可不同。组间交叉测试按用户要求暂不进行。
+所有数值由程序实际运行得到。`results` 为本地实验记录，`cross-test` 为他组原包和本组交叉结果，`screenshots` 为真实 Qt 窗口截图；不同次运行的耗时可以不同。另一组数据的 119 个用例、220 行结果全部通过。
 
 ## 测试与本地参考
 
 | 文件 | 内容 |
 |---|---|
 | [summary.json](results/summary.json) | 软件版本、测试汇总、实验结果与教材文件哈希，不含个人路径或硬件标识 |
-| [unittest.txt](results/unittest.txt) | 49 项完整测试原始输出 |
+| [unittest.txt](results/unittest.txt) | 56 项完整测试原始输出 |
 | [binary-trace.json](results/binary-trace.json) | A749 / 2D55 的轮密钥与逐步状态 |
 | [local-vectors.csv](results/local-vectors.csv) | 本地生成 8 条 16 位向量，供交换工具自测 |
 | [independent-reference.csv](results/independent-reference.csv) | 同 8 条向量的生产实现与独立参考对照 |
 | [ascii.json](results/ascii.json) | ASCII 样例、填充、密文及恢复结果 |
 | [multiple.json](results/multiple.json) | 双重与两种三重的密钥、密文、恢复结果 |
+
+## 他组交叉验证
+
+| 文件 | 内容 |
+|---|---|
+| [原始压缩包](cross-test/S-AES-cross-test-20261024.zip) | 用户转交的他组数据，按原字节保存 |
+| [原始清单](cross-test/peer-original/manifest.sha256) | 13 份原始文件的 SHA-256 |
+| [peer-vectors-import.csv](cross-test/peer-vectors-import.csv) | 64 组基础数据，保留原位串及行顺序 |
+| [basic-cross-results.csv](cross-test/basic-cross-results.csv) | 64 组实际密文、恢复明文、独立参考与轮密钥一致性 |
+| [cross-test-results.csv](cross-test/cross-test-results.csv) | 原结果模板 220 行完整回填，全部 PASS |
+| [cross-test-summary.json](cross-test/cross-test-summary.json) | 8 类测试计数、来源哈希、MITM 散列及完成状态 |
+| [cross-test-details.json](cross-test/cross-test-details.json) | 多重阶段输出、MITM 统计及篡改逐块差异 |
+| [M001-candidates.txt](cross-test/M001-candidates.txt) | 单对数据的完整 66,009 个候选，规范 LF 文本 |
+| [M002-candidates.txt](cross-test/M002-candidates.txt) | 三对数据的唯一候选 1234ABCD |
+| [ui-evidence.json](cross-test/ui-evidence.json) | 真实 Qt 按钮导入后，全部 64 行加密与解密显示核验 |
+
+原包说明、数据和未填写模板保存在 `cross-test/peer-original/`，本组结果独立保存，不覆盖他组原文件。详细结论见[交叉测试报告](../cross-test-record.md)。
 
 ## 中间相遇
 
@@ -49,6 +66,8 @@
 | [09-cbc-tamper.png](screenshots/09-cbc-tamper.png) | 滚动到篡改实验，展示差异表 |
 | [10-binary-scale-1_5.png](screenshots/10-binary-scale-1_5.png) | 150% 缩放 |
 | [10-binary-scale-2.png](screenshots/10-binary-scale-2.png) | 200% 缩放 |
+| [11-peer-cross-top.png](screenshots/11-peer-cross-top.png) | 他组 64/64 通过，首批向量及双向结果 |
+| [12-peer-cross-bottom.png](screenshots/12-peer-cross-bottom.png) | 同一文件末批向量及双向结果 |
 
 六个主要页面另有 `-compact.png` 同名文件，记录 960×640 小窗口布局。每张图片保存整个应用窗口；长表格可滚动，完整数据以 CSV / JSON 为准。
 
@@ -58,6 +77,7 @@
 
 ```powershell
 .\.venv\Scripts\python.exe tools/verify_project.py
+.\.venv\Scripts\python.exe tools/verify_cross_test.py
 .\.venv\Scripts\python.exe tools/capture_screenshots.py
 $env:QT_SCALE_FACTOR = '1.5'
 .\.venv\Scripts\python.exe tools/gui_probe.py
@@ -66,4 +86,4 @@ $env:QT_SCALE_FACTOR = '2'
 Remove-Item Env:QT_SCALE_FACTOR
 ```
 
-重跑会覆盖对应生成材料，时间会变化；文档中的交付时历史计时不会自动改写。教材获取及本地副本说明见 [reference](../reference/README.md)。组间材料目录说明见 [cross-test/README.md](cross-test/README.md)。
+重跑只覆盖本组生成材料，保留他组原包及 `peer-original` 的字节内容；时间会变化，文档中的交付时计时不会自动改写。教材获取及本地副本说明见 [reference](../reference/README.md)。全部他组文件说明见 [cross-test/README.md](cross-test/README.md)。

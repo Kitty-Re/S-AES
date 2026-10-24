@@ -202,6 +202,20 @@ class UiTests(unittest.TestCase):
         self.wait_task(page.task)
         self.assertEqual(page.checks.rowCount(), 7)
 
+    def test_peer_csv_import_displays_both_actual_directions(self):
+        self.window.navigation.setCurrentRow(5)
+        page = self.window.pages[5]
+        source = Path(__file__).resolve().parents[1] / "docs/evidence/cross-test/peer-vectors-import.csv"
+        with patch("saes_app.ui.pages.testing.QFileDialog.getOpenFileName", return_value=(str(source), "")):
+            QTest.mouseClick(page.import_button, Qt.MouseButton.LeftButton)
+        self.assertIn("64/64", page.summary.text())
+        self.assertEqual(len(page.last_checks), 64)
+        self.assertTrue(all(row.passed for row in page.last_checks))
+        self.assertEqual(page.exchange_table.item(0, 4).text(), "24EC")
+        self.assertEqual(page.exchange_table.item(0, 5).text(), "D728")
+        self.assertEqual(page.exchange_table.item(63, 4).text(), "B2B6")
+        self.assertEqual(page.exchange_table.item(63, 5).text(), "CE65")
+
     def test_close_window_cancels_worker_cleanly(self):
         page = self.window.pages[3]
         page.start()

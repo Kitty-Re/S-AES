@@ -1,0 +1,54 @@
+[
+  {
+    "id": "M001",
+    "algorithm": "double_EE32",
+    "key_range_hex": [
+      "0000",
+      "FFFF"
+    ],
+    "pairs": [
+      {
+        "plaintext_hex": "D728",
+        "ciphertext_hex": "73A7",
+        "plaintext_binary": "1101011100101000",
+        "ciphertext_binary": "0111001110100111"
+      }
+    ],
+    "expected_candidate_count": 66009,
+    "known_valid_key_hex": "1234ABCD",
+    "expected_unique_key_hex": null,
+    "candidate_set_sha256": "a4b24ca20a14ce63a50c4c39126fd99da5170735bdf4cf1de3cd5bc5dcd2372c"
+  },
+  {
+    "id": "M002",
+    "algorithm": "double_EE32",
+    "key_range_hex": [
+      "0000",
+      "FFFF"
+    ],
+    "pairs": [
+      {
+        "plaintext_hex": "D728",
+        "ciphertext_hex": "73A7",
+        "plaintext_binary": "1101011100101000",
+        "ciphertext_binary": "0111001110100111"
+      },
+      {
+        "plaintext_hex": "0000",
+        "ciphertext_hex": "B50E",
+        "plaintext_binary": "0000000000000000",
+        "ciphertext_binary": "1011010100001110"
+      },
+      {
+        "plaintext_hex": "FFFF",
+        "ciphertext_hex": "4089",
+        "plaintext_binary": "1111111111111111",
+        "ciphertext_binary": "0100000010001001"
+      }
+    ],
+    "expected_candidate_count": 1,
+    "known_valid_key_hex": "1234ABCD",
+    "expected_unique_key_hex": "1234ABCD",
+    "candidate_set_sha256": "c8d34d579a1be7a4383047b1218842a680345ef78db0d8fdac7e522622d5775d"
+  }
+]

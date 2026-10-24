@@ -1,0 +1,200 @@
+[
+  {
+    "id": "C001",
+    "name": "无填充基线",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "none",
+    "plaintext_text": "ABCDEFGH",
+    "plaintext_hex": "4142434445464748",
+    "plaintext_binary": "0100000101000010010000110100010001000101010001100100011101001000",
+    "plaintext_escaped": "ABCDEFGH",
+    "padded_plaintext_hex": "4142434445464748",
+    "ciphertext_hex": "1515D57297776771",
+    "ciphertext_binary": "0001010100010101110101010111001010010111011101110110011101110001",
+    "ciphertext_escaped": "\\x15\\x15\\xD5r\\x97wgq",
+    "expected_decrypted_hex": "4142434445464748",
+    "iv_hex": "CAFE",
+    "iv_binary": "1100101011111110"
+  },
+  {
+    "id": "C002",
+    "name": "相同明文不同IV",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "none",
+    "plaintext_text": "ABCDEFGH",
+    "plaintext_hex": "4142434445464748",
+    "plaintext_binary": "0100000101000010010000110100010001000101010001100100011101001000",
+    "plaintext_escaped": "ABCDEFGH",
+    "padded_plaintext_hex": "4142434445464748",
+    "ciphertext_hex": "7B3DABD18621E4D8",
+    "ciphertext_binary": "0111101100111101101010111101000110000110001000011110010011011000",
+    "ciphertext_escaped": "{=\\xAB\\xD1\\x86!\\xE4\\xD8",
+    "expected_decrypted_hex": "4142434445464748",
+    "iv_hex": "0000",
+    "iv_binary": "0000000000000000"
+  },
+  {
+    "id": "C003",
+    "name": "重复零分组",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "0000"
+    ],
+    "combined_key_hex": "0000",
+    "combined_key_binary": "0000000000000000",
+    "padding": "none",
+    "plaintext_text": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+    "plaintext_hex": "0000000000000000",
+    "plaintext_binary": "0000000000000000000000000000000000000000000000000000000000000000",
+    "plaintext_escaped": "\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00",
+    "padded_plaintext_hex": "0000000000000000",
+    "ciphertext_hex": "071E4AB9DCB4FF46",
+    "ciphertext_binary": "0000011100011110010010101011100111011100101101001111111101000110",
+    "ciphertext_escaped": "\\x07\\x1EJ\\xB9\\xDC\\xB4\\xFFF",
+    "expected_decrypted_hex": "0000000000000000",
+    "iv_hex": "0000",
+    "iv_binary": "0000000000000000"
+  },
+  {
+    "id": "C004",
+    "name": "重复ASCII分组",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "none",
+    "plaintext_text": "ABCDABCD",
+    "plaintext_hex": "4142434441424344",
+    "plaintext_binary": "0100000101000010010000110100010001000001010000100100001101000100",
+    "plaintext_escaped": "ABCDABCD",
+    "padded_plaintext_hex": "4142434441424344",
+    "ciphertext_hex": "1515D5726DBE4998",
+    "ciphertext_binary": "0001010100010101110101010111001001101101101111100100100110011000",
+    "ciphertext_escaped": "\\x15\\x15\\xD5rm\\xBEI\\x98",
+    "expected_decrypted_hex": "4142434441424344",
+    "iv_hex": "CAFE",
+    "iv_binary": "1100101011111110"
+  },
+  {
+    "id": "C005",
+    "name": "奇数长消息",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "S-AES CBC demo!",
+    "plaintext_hex": "532D414553204342432064656D6F21",
+    "plaintext_binary": "010100110010110101000001010001010101001100100000010000110100001001000011001000000110010001100101011011010110111100100001",
+    "plaintext_escaped": "S-AES CBC demo!",
+    "padded_plaintext_hex": "532D414553204342432064656D6F2101",
+    "ciphertext_hex": "546CB5DAC3E5B59208A7E23C47676A62",
+    "ciphertext_binary": "01010100011011001011010111011010110000111110010110110101100100100000100010100111111000100011110001000111011001110110101001100010",
+    "ciphertext_escaped": "Tl\\xB5\\xDA\\xC3\\xE5\\xB5\\x92\\x08\\xA7\\xE2<Ggjb",
+    "expected_decrypted_hex": "532D414553204342432064656D6F21",
+    "iv_hex": "CAFE",
+    "iv_binary": "1100101011111110"
+  },
+  {
+    "id": "C006",
+    "name": "空串",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "0000"
+    ],
+    "combined_key_hex": "0000",
+    "combined_key_binary": "0000000000000000",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "",
+    "plaintext_hex": "",
+    "plaintext_binary": "",
+    "plaintext_escaped": "",
+    "padded_plaintext_hex": "0202",
+    "ciphertext_hex": "8990",
+    "ciphertext_binary": "1000100110010000",
+    "ciphertext_escaped": "\\x89\\x90",
+    "expected_decrypted_hex": "",
+    "iv_hex": "0000",
+    "iv_binary": "0000000000000000"
+  },
+  {
+    "id": "C007",
+    "name": "单字节",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "FFFF"
+    ],
+    "combined_key_hex": "FFFF",
+    "combined_key_binary": "1111111111111111",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "A",
+    "plaintext_hex": "41",
+    "plaintext_binary": "01000001",
+    "plaintext_escaped": "A",
+    "padded_plaintext_hex": "4101",
+    "ciphertext_hex": "9B86",
+    "ciphertext_binary": "1001101110000110",
+    "ciphertext_escaped": "\\x9B\\x86",
+    "expected_decrypted_hex": "41",
+    "iv_hex": "FFFF",
+    "iv_binary": "1111111111111111"
+  },
+  {
+    "id": "C008",
+    "name": "偶数消息填充",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "AB",
+    "plaintext_hex": "4142",
+    "plaintext_binary": "0100000101000010",
+    "plaintext_escaped": "AB",
+    "padded_plaintext_hex": "41420202",
+    "ciphertext_hex": "151555F6",
+    "ciphertext_binary": "00010101000101010101010111110110",
+    "ciphertext_escaped": "\\x15\\x15U\\xF6",
+    "expected_decrypted_hex": "4142",
+    "iv_hex": "CAFE",
+    "iv_binary": "1100101011111110"
+  },
+  {
+    "id": "C009",
+    "name": "原始字节序",
+    "algorithm": "CBC_single",
+    "keys_hex": [
+      "4AF5"
+    ],
+    "combined_key_hex": "4AF5",
+    "combined_key_binary": "0100101011110101",
+    "padding": "none",
+    "plaintext_text": "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r\u000e\u000f",
+    "plaintext_hex": "000102030405060708090A0B0C0D0E0F",
+    "plaintext_binary": "00000000000000010000001000000011000001000000010100000110000001110000100000001001000010100000101100001100000011010000111000001111",
+    "plaintext_escaped": "\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\x09\\x0A\\x0B\\x0C\\x0D\\x0E\\x0F",
+    "padded_plaintext_hex": "000102030405060708090A0B0C0D0E0F",
+    "ciphertext_hex": "74B656A0B7CAC3B2296DFDC6D3B0FBCE",
+    "ciphertext_binary": "01110100101101100101011010100000101101111100101011000011101100100010100101101101111111011100011011010011101100001111101111001110",
+    "ciphertext_escaped": "t\\xB6V\\xA0\\xB7\\xCA\\xC3\\xB2)m\\xFD\\xC6\\xD3\\xB0\\xFB\\xCE",
+    "expected_decrypted_hex": "000102030405060708090A0B0C0D0E0F",
+    "iv_hex": "1234",
+    "iv_binary": "0001001000110100"
+  }
+]

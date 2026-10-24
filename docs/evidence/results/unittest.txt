@@ -10,6 +10,12 @@ test_sbox_from_field_inverse_and_affine_map (tests.test_core.CoreTests.test_sbox
 test_strict_validation_including_cached_bool (tests.test_core.CoreTests.test_strict_validation_including_cached_bool) ... ok
 test_trace_matches_optimized_path (tests.test_core.CoreTests.test_trace_matches_optimized_path) ... ok
 test_transform_inverses_all_states (tests.test_core.CoreTests.test_transform_inverses_all_states) ... ok
+test_all_peer_basic_encryption_and_decryption (tests.test_cross_test.PeerCrossTests.test_all_peer_basic_encryption_and_decryption) ... ok
+test_all_peer_extended_modes_tampering_and_invalid_inputs (tests.test_cross_test.PeerCrossTests.test_all_peer_extended_modes_tampering_and_invalid_inputs) ... ok
+test_full_mitm_candidate_sets_match_external_hashes (tests.test_cross_test.PeerCrossTests.test_full_mitm_candidate_sets_match_external_hashes) ... ok
+test_modified_source_is_rejected_and_wrong_computation_fails (tests.test_cross_test.PeerCrossTests.test_modified_source_is_rejected_and_wrong_computation_fails) ... ok
+test_original_archive_and_manifest_remain_identical (tests.test_cross_test.PeerCrossTests.test_original_archive_and_manifest_remain_identical) ... ok
+test_template_expectations_and_empty_outputs_are_preserved (tests.test_cross_test.PeerCrossTests.test_template_expectations_and_empty_outputs_are_preserved) ... ok
 test_attack_validation (tests.test_services.AttackTests.test_attack_validation) ... ok
 test_cancel_before_and_during_table_build (tests.test_services.AttackTests.test_cancel_before_and_during_table_build) ... ok
 test_cancel_during_reverse_search (tests.test_services.AttackTests.test_cancel_during_reverse_search) ... ok
@@ -47,8 +53,9 @@ test_checks_and_csv_local_import (tests.test_ui.UiTests.test_checks_and_csv_loca
 test_close_window_cancels_worker_cleanly (tests.test_ui.UiTests.test_close_window_cancels_worker_cleanly) ... ok
 test_compact_layout_all_pages (tests.test_ui.UiTests.test_compact_layout_all_pages) ... ok
 test_keyboard_navigation_enter_and_invalid_input (tests.test_ui.UiTests.test_keyboard_navigation_enter_and_invalid_input) ... ok
+test_peer_csv_import_displays_both_actual_directions (tests.test_ui.UiTests.test_peer_csv_import_displays_both_actual_directions) ... ok
 
 ----------------------------------------------------------------------
-Ran 49 tests in 3.716s
+Ran 56 tests in 5.222s
 
 OK

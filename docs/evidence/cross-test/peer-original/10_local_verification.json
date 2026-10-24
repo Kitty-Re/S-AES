@@ -1,0 +1,34 @@
+{
+  "generated_date": "2026-10-24",
+  "data_pack": "S-AES-cross-test-20261024",
+  "random_seed": 20261024,
+  "local_verification": "passed",
+  "peer_testing_status": "awaiting_peer_results",
+  "case_counts": {
+    "basic": 64,
+    "ascii": 12,
+    "double": 8,
+    "triple48": 8,
+    "mitm": 2,
+    "cbc": 9,
+    "tamper": 6,
+    "invalid": 10
+  },
+  "result_rows": 220,
+  "checks": [
+    "all basic outputs and round keys match independent reference",
+    "all multi-encryption and message outputs match independent reference",
+    "all valid ciphertexts decrypt to the exact input bytes",
+    "all tampered raw decryptions match independent matrix inverse",
+    "both complete MITM candidate sets match independent enumeration",
+    "all invalid inputs are rejected",
+    "basic GUI JSON loads with current schema"
+  ],
+  "source_sha256": {
+    "saes\\core.py": "54fc19cb56e72a9e3f5e8135475f998cc894908e29414ac32c36e5a26d96377e",
+    "saes\\modes.py": "6927e8eac56595018c66987ec3b4336dd1563d64f183fb8b921e8ef4d824e11b",
+    "saes\\attack.py": "95ee8c3021689aef8d6a07fefebf4f0efd19483505bcacfdaab82de1f10edfe5",
+    "tests\\reference.py": "de7582a653426c77e6068b3e3a46bef423bd18a7d28697eb3380463c40be9ccc",
+    "scripts\\generate_cross_test_pack.py": "38b947549c99bddb29825960adc961520bbd54757f017bf2c63d09be3c2e7e32"
+  }
+}

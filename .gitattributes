@@ -8,3 +8,6 @@
 *.bat text eol=crlf
 *.png binary
 *.pdf binary
+*.zip binary
+# Preserve the other group's original bytes and manifest hashes.
+docs/evidence/cross-test/peer-original/** -text

@@ -24,7 +24,22 @@ def main():
     summary = json.loads((ROOT / "docs/evidence/results/summary.json").read_text(encoding="utf-8"))
     assert summary["tests"]["failures"] == summary["tests"]["errors"] == 0
     assert summary["members"] == []
-    assert summary["cross_group_testing"] == "deferred_by_user"
+    assert summary["cross_group_testing"] == "passed_peer_dataset"
+    cross = ROOT / "docs/evidence/cross-test"
+    peer = json.loads((cross / "cross-test-summary.json").read_text(encoding="utf-8"))
+    assert peer["result_rows"] == peer["passed"] == 220 and peer["failed"] == peer["not_run"] == 0
+    assert peer["basic_vectors"] == peer["basic_passed"] == 64
+    for name, digest in peer["source_file_sha256"].items():
+        assert hashlib.sha256((cross / "peer-original" / name).read_bytes()).hexdigest() == digest
+    assert hashlib.sha256((cross / peer["source_archive"]).read_bytes()).hexdigest() == peer["source_archive_sha256"]
+    with (cross / "cross-test-results.csv").open(encoding="utf-8-sig", newline="") as stream:
+        results = list(csv.DictReader(stream))
+    assert len(results) == 220 and all(row["status"] == "PASS" for row in results)
+    for case_id, result in peer["mitm"].items():
+        assert hashlib.sha256((cross / f"{case_id}-candidates.txt").read_bytes()).hexdigest() == result["candidate_set_sha256"]
+    ui = json.loads((cross / "ui-evidence.json").read_text(encoding="utf-8"))
+    assert ui["rows"] == ui["encrypt_passed"] == ui["decrypt_passed"] == 64 and ui["all_passed"]
+    assert all((ROOT / image).is_file() for image in ui["screenshots"])
     pdf = ROOT / "docs/reference/附录D 简化AES.pdf"
     if pdf.exists() and summary.get("source_pdf_sha256"):
         assert hashlib.sha256(pdf.read_bytes()).hexdigest() == summary["source_pdf_sha256"]

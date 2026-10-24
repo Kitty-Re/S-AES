@@ -1,0 +1,324 @@
+{
+  "D001": {
+    "stages": [
+      "24EC",
+      "4A90"
+    ],
+    "stages_match": true
+  },
+  "D002": {
+    "stages": [
+      "7BB8",
+      "73A7"
+    ],
+    "stages_match": true
+  },
+  "D003": {
+    "stages": [
+      "071E",
+      "4AB9"
+    ],
+    "stages_match": true
+  },
+  "D004": {
+    "stages": [
+      "5343",
+      "7AB5"
+    ],
+    "stages_match": true
+  },
+  "D005": {
+    "stages": [
+      "CE07",
+      "363C"
+    ],
+    "stages_match": true
+  },
+  "D006": {
+    "stages": [
+      "646B",
+      "6CEF"
+    ],
+    "stages_match": true
+  },
+  "D007": {
+    "stages": [
+      "D170",
+      "BEC2"
+    ],
+    "stages_match": true
+  },
+  "D008": {
+    "stages": [
+      "AB86",
+      "B726"
+    ],
+    "stages_match": true
+  },
+  "T001": {
+    "stages": [
+      "24EC",
+      "4A90",
+      "0E5D"
+    ],
+    "stages_match": true
+  },
+  "T002": {
+    "stages": [
+      "7BB8",
+      "73A7",
+      "71D0"
+    ],
+    "stages_match": true
+  },
+  "T003": {
+    "stages": [
+      "071E",
+      "4AB9",
+      "DCB4"
+    ],
+    "stages_match": true
+  },
+  "T004": {
+    "stages": [
+      "5343",
+      "7AB5",
+      "EA13"
+    ],
+    "stages_match": true
+  },
+  "T005": {
+    "stages": [
+      "CE07",
+      "363C",
+      "9513"
+    ],
+    "stages_match": true
+  },
+  "T006": {
+    "stages": [
+      "646B",
+      "6CEF",
+      "3502"
+    ],
+    "stages_match": true
+  },
+  "T007": {
+    "stages": [
+      "D170",
+      "BEC2",
+      "0D8B"
+    ],
+    "stages_match": true
+  },
+  "T008": {
+    "stages": [
+      "AB86",
+      "B726",
+      "5C85"
+    ],
+    "stages_match": true
+  },
+  "M001": {
+    "candidate_count": 66009,
+    "candidate_set_sha256": "a4b24ca20a14ce63a50c4c39126fd99da5170735bdf4cf1de3cd5bc5dcd2372c",
+    "expected_sha256": "a4b24ca20a14ce63a50c4c39126fd99da5170735bdf4cf1de3cd5bc5dcd2372c",
+    "hash_matches": true,
+    "completed": true,
+    "checked": 131072,
+    "elapsed_seconds": 0.18535239999982878
+  },
+  "M002": {
+    "candidate_count": 1,
+    "candidate_set_sha256": "c8d34d579a1be7a4383047b1218842a680345ef78db0d8fdac7e522622d5775d",
+    "expected_sha256": "c8d34d579a1be7a4383047b1218842a680345ef78db0d8fdac7e522622d5775d",
+    "hash_matches": true,
+    "completed": true,
+    "checked": 131072,
+    "elapsed_seconds": 0.2389724999993632
+  },
+  "X001": {
+    "pkcs7_status": "not_used",
+    "affected_blocks": [
+      1,
+      2
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "6149",
+        "xor_difference_hex": "200B"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "4345",
+        "xor_difference_hex": "0001"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "4546",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "4748",
+        "xor_difference_hex": "0000"
+      }
+    ]
+  },
+  "X002": {
+    "pkcs7_status": "not_used",
+    "affected_blocks": [
+      2,
+      3
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "4142",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "334D",
+        "xor_difference_hex": "7009"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "4547",
+        "xor_difference_hex": "0001"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "4748",
+        "xor_difference_hex": "0000"
+      }
+    ]
+  },
+  "X003": {
+    "pkcs7_status": "not_used",
+    "affected_blocks": [
+      2,
+      3
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "4142",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "A468",
+        "xor_difference_hex": "E72C"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "9034",
+        "xor_difference_hex": "D572"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "4748",
+        "xor_difference_hex": "0000"
+      }
+    ]
+  },
+  "X004": {
+    "pkcs7_status": "not_used",
+    "affected_blocks": [
+      4
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "4142",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "4344",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "4546",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "C742",
+        "xor_difference_hex": "800A"
+      }
+    ]
+  },
+  "X005": {
+    "pkcs7_status": "not_used",
+    "affected_blocks": [
+      1
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "4143",
+        "xor_difference_hex": "0001"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "4344",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "4546",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "4748",
+        "xor_difference_hex": "0000"
+      }
+    ]
+  },
+  "X006": {
+    "pkcs7_status": "invalid",
+    "affected_blocks": [
+      1,
+      2
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "6149",
+        "xor_difference_hex": "200B"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "0202",
+        "modified_plaintext_hex": "0203",
+        "xor_difference_hex": "0001"
+      }
+    ]
+  }
+}

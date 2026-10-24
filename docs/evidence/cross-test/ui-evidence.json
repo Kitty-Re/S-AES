@@ -1,0 +1,17 @@
+{
+  "program_version": "1.1.0",
+  "input_csv": "peer-vectors-import.csv",
+  "rows": 64,
+  "encrypt_passed": 64,
+  "decrypt_passed": 64,
+  "all_passed": true,
+  "window_size": [
+    1320,
+    1120
+  ],
+  "screenshots": [
+    "docs/evidence/screenshots/11-peer-cross-top.png",
+    "docs/evidence/screenshots/12-peer-cross-bottom.png"
+  ],
+  "interaction": "Qt import button with selected CSV path"
+}

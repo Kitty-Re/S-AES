@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from PySide6.QtWidgets import QCheckBox, QFileDialog
 
 from ...services.checks import run_checks
@@ -21,16 +23,17 @@ class TestingPage(Page):
         card.body.addWidget(self.checks)
         self.body.addWidget(card)
         exchange = Card("CSV 交换与验证")
-        exchange.body.addWidget(label("组间交叉测试暂不开展。导出样例仅供本地演练；导入真实他组数据后，才能记录组间测试结论。"))
+        exchange.body.addWidget(label("导出样例用于本地演练；组间测试请导入对方数据。表格同时展示本组加密与对方密文的解密结果，数值以 HEX 显示。"))
         self.export_button = button("导出本地样例 CSV", self.export)
         self.import_button = button("导入并双向验证", self.import_file, True)
         exchange.body.addLayout(actions(self.export_button, self.import_button))
         self.summary = label("尚未导入数据")
-        self.exchange_table = Table(("CSV 行", "明文", "密钥", "文件密文", "实际密文", "结论"), 200)
+        self.exchange_table = Table(("CSV 行", "明文 HEX", "密钥 HEX", "文件密文", "加密结果", "解密结果", "结论"), 240)
         exchange.body.addWidget(self.summary)
         exchange.body.addWidget(self.exchange_table)
         self.body.addWidget(exchange)
         self.finish_layout()
+        self.last_checks = ()
 
     def start_checks(self):
         if self.task.running:
@@ -56,11 +59,16 @@ class TestingPage(Page):
     def import_path(self, path):
         self.summary.setText("尚未导入数据")
         self.exchange_table.setRowCount(0)
+        self.last_checks = ()
 
         def operation():
             rows = verify_csv(path)
+            self.last_checks = rows
             count = sum(row.passed for row in rows)
-            self.summary.setText(f"文件验证通过 {count}/{len(rows)} 行 · 结果仅针对当前导入文件")
-            self.exchange_table.set_rows((row.line, row.plaintext, row.key, row.ciphertext, row.actual_ciphertext,
+            self.summary.setText(f"文件验证通过 {count}/{len(rows)} 行 · {Path(path).name} · 加密与解密双向核对")
+            def hex_word(value):
+                return f"{int(value.strip(), 2):04X}" if len(value.strip()) == 16 and set(value.strip()) <= {"0", "1"} else value
+            self.exchange_table.set_rows((row.line, hex_word(row.plaintext), hex_word(row.key), hex_word(row.ciphertext),
+                                          hex_word(row.actual_ciphertext), hex_word(row.recovered_plaintext),
                                           "通过" if row.passed else row.error) for row in rows[:200])
         self.guard(operation)

@@ -1,0 +1,245 @@
+[
+  {
+    "id": "A001",
+    "name": "空串",
+    "algorithm": "single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "",
+    "plaintext_hex": "",
+    "plaintext_binary": "",
+    "plaintext_escaped": "",
+    "padded_plaintext_hex": "0202",
+    "ciphertext_hex": "23DF",
+    "ciphertext_binary": "0010001111011111",
+    "ciphertext_escaped": "#\\xDF",
+    "expected_decrypted_hex": ""
+  },
+  {
+    "id": "A002",
+    "name": "单字节",
+    "algorithm": "single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "A",
+    "plaintext_hex": "41",
+    "plaintext_binary": "01000001",
+    "plaintext_escaped": "A",
+    "padded_plaintext_hex": "4101",
+    "ciphertext_hex": "074F",
+    "ciphertext_binary": "0000011101001111",
+    "ciphertext_escaped": "\\x07O",
+    "expected_decrypted_hex": "41"
+  },
+  {
+    "id": "A003",
+    "name": "偶数字节",
+    "algorithm": "single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "AB",
+    "plaintext_hex": "4142",
+    "plaintext_binary": "0100000101000010",
+    "plaintext_escaped": "AB",
+    "padded_plaintext_hex": "41420202",
+    "ciphertext_hex": "7B3D23DF",
+    "ciphertext_binary": "01111011001111010010001111011111",
+    "ciphertext_escaped": "{=#\\xDF",
+    "expected_decrypted_hex": "4142"
+  },
+  {
+    "id": "A004",
+    "name": "奇数字节",
+    "algorithm": "single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "ABC",
+    "plaintext_hex": "414243",
+    "plaintext_binary": "010000010100001001000011",
+    "plaintext_escaped": "ABC",
+    "padded_plaintext_hex": "41424301",
+    "ciphertext_hex": "7B3D09CF",
+    "ciphertext_binary": "01111011001111010000100111001111",
+    "ciphertext_escaped": "{=\\x09\\xCF",
+    "expected_decrypted_hex": "414243"
+  },
+  {
+    "id": "A005",
+    "name": "短句",
+    "algorithm": "single",
+    "keys_hex": [
+      "4AF5"
+    ],
+    "combined_key_hex": "4AF5",
+    "combined_key_binary": "0100101011110101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "Hello S-AES",
+    "plaintext_hex": "48656C6C6F20532D414553",
+    "plaintext_binary": "0100100001100101011011000110110001101111001000000101001100101101010000010100010101010011",
+    "plaintext_escaped": "Hello S-AES",
+    "padded_plaintext_hex": "48656C6C6F20532D41455301",
+    "ciphertext_hex": "0757F12B3AC522790247E644",
+    "ciphertext_binary": "000001110101011111110001001010110011101011000101001000100111100100000010010001111110011001000100",
+    "ciphertext_escaped": "\\x07W\\xF1+:\\xC5\"y\\x02G\\xE6D",
+    "expected_decrypted_hex": "48656C6C6F20532D414553"
+  },
+  {
+    "id": "A006",
+    "name": "双字节无填充",
+    "algorithm": "single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "none",
+    "plaintext_text": "AB",
+    "plaintext_hex": "4142",
+    "plaintext_binary": "0100000101000010",
+    "plaintext_escaped": "AB",
+    "padded_plaintext_hex": "4142",
+    "ciphertext_hex": "7B3D",
+    "ciphertext_binary": "0111101100111101",
+    "ciphertext_escaped": "{=",
+    "expected_decrypted_hex": "4142"
+  },
+  {
+    "id": "A007",
+    "name": "短句无填充",
+    "algorithm": "single",
+    "keys_hex": [
+      "4AF5"
+    ],
+    "combined_key_hex": "4AF5",
+    "combined_key_binary": "0100101011110101",
+    "padding": "none",
+    "plaintext_text": "Hello AES!",
+    "plaintext_hex": "48656C6C6F2041455321",
+    "plaintext_binary": "01001000011001010110110001101100011011110010000001000001010001010101001100100001",
+    "plaintext_escaped": "Hello AES!",
+    "padded_plaintext_hex": "48656C6C6F2041455321",
+    "ciphertext_hex": "0757F12B3AC50247E274",
+    "ciphertext_binary": "00000111010101111111000100101011001110101100010100000010010001111110001001110100",
+    "ciphertext_escaped": "\\x07W\\xF1+:\\xC5\\x02G\\xE2t",
+    "expected_decrypted_hex": "48656C6C6F2041455321"
+  },
+  {
+    "id": "A008",
+    "name": "全部128个ASCII字节",
+    "algorithm": "single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "none",
+    "plaintext_text": "\u0000\u0001\u0002\u0003\u0004\u0005\u0006\u0007\b\t\n\u000b\f\r\u000e\u000f\u0010\u0011\u0012\u0013\u0014\u0015\u0016\u0017\u0018\u0019\u001a\u001b\u001c\u001d\u001e\u001f !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~",
+    "plaintext_hex": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F",
+    "plaintext_binary": "0000000000000001000000100000001100000100000001010000011000000111000010000000100100001010000010110000110000001101000011100000111100010000000100010001001000010011000101000001010100010110000101110001100000011001000110100001101100011100000111010001111000011111001000000010000100100010001000110010010000100101001001100010011100101000001010010010101000101011001011000010110100101110001011110011000000110001001100100011001100110100001101010011011000110111001110000011100100111010001110110011110000111101001111100011111101000000010000010100001001000011010001000100010101000110010001110100100001001001010010100100101101001100010011010100111001001111010100000101000101010010010100110101010001010101010101100101011101011000010110010101101001011011010111000101110101011110010111110110000001100001011000100110001101100100011001010110011001100111011010000110100101101010011010110110110001101101011011100110111101110000011100010111001001110011011101000111010101110110011101110111100001111001011110100111101101111100011111010111111001111111",
+    "plaintext_escaped": "\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\x09\\x0A\\x0B\\x0C\\x0D\\x0E\\x0F\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1A\\x1B\\x1C\\x1D\\x1E\\x1F !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\\x7F",
+    "padded_plaintext_hex": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F",
+    "ciphertext_hex": "38EDF3DA1419DCFC7F75C524A187EB50EBB92485037D5036B11A8D989FD338621AC171923FFF6D17F430908E832C02055770856F4DB2EF4BACE123037058DE8D0E1FBD50E5E141C320B2A4ABCC6617DAD242CF216130357E93FFFCD7B4945AA9FD233E4B77A7CA6F190EDBE046C92534916B6A73C28E7E20DBD719FFE815AFBC",
+    "ciphertext_binary": "0011100011101101111100111101101000010100000110011101110011111100011111110111010111000101001001001010000110000111111010110101000011101011101110010010010010000101000000110111110101010000001101101011000100011010100011011001100010011111110100110011100001100010000110101100000101110001100100100011111111111111011011010001011111110100001100001001000010001110100000110010110000000010000001010101011101110000100001010110111101001101101100101110111101001011101011001110000100100011000000110111000001011000110111101000110100001110000111111011110101010000111001011110000101000001110000110010000010110010101001001010101111001100011001100001011111011010110100100100001011001111001000010110000100110000001101010111111010010011111111111111110011010111101101001001010001011010101010011111110100100011001111100100101101110111101001111100101001101111000110010000111011011011111000000100011011001001001001010011010010010001011010110110101001110011110000101000111001111110001000001101101111010111000110011111111111101000000101011010111110111100",
+    "ciphertext_escaped": "8\\xED\\xF3\\xDA\\x14\\x19\\xDC\\xFC\\x7Fu\\xC5$\\xA1\\x87\\xEBP\\xEB\\xB9$\\x85\\x03}P6\\xB1\\x1A\\x8D\\x98\\x9F\\xD38b\\x1A\\xC1q\\x92?\\xFFm\\x17\\xF40\\x90\\x8E\\x83,\\x02\\x05Wp\\x85oM\\xB2\\xEFK\\xAC\\xE1#\\x03pX\\xDE\\x8D\\x0E\\x1F\\xBDP\\xE5\\xE1A\\xC3 \\xB2\\xA4\\xAB\\xCCf\\x17\\xDA\\xD2B\\xCF!a05~\\x93\\xFF\\xFC\\xD7\\xB4\\x94Z\\xA9\\xFD#>Kw\\xA7\\xCAo\\x19\\x0E\\xDB\\xE0F\\xC9%4\\x91kjs\\xC2\\x8E~ \\xDB\\xD7\\x19\\xFF\\xE8\\x15\\xAF\\xBC",
+    "expected_decrypted_hex": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F"
+  },
+  {
+    "id": "A009",
+    "name": "NUL和DEL",
+    "algorithm": "single",
+    "keys_hex": [
+      "1234"
+    ],
+    "combined_key_hex": "1234",
+    "combined_key_binary": "0001001000110100",
+    "padding": "none",
+    "plaintext_text": "A\u0000B",
+    "plaintext_hex": "4100427F",
+    "plaintext_binary": "01000001000000000100001001111111",
+    "plaintext_escaped": "A\\x00B\\x7F",
+    "padded_plaintext_hex": "4100427F",
+    "ciphertext_hex": "4068BD8E",
+    "ciphertext_binary": "01000000011010001011110110001110",
+    "ciphertext_escaped": "@h\\xBD\\x8E",
+    "expected_decrypted_hex": "4100427F"
+  },
+  {
+    "id": "A010",
+    "name": "明文末尾01",
+    "algorithm": "single",
+    "keys_hex": [
+      "2D55"
+    ],
+    "combined_key_hex": "2D55",
+    "combined_key_binary": "0010110101010101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "A\u0001",
+    "plaintext_hex": "4101",
+    "plaintext_binary": "0100000100000001",
+    "plaintext_escaped": "A\\x01",
+    "padded_plaintext_hex": "41010202",
+    "ciphertext_hex": "074F23DF",
+    "ciphertext_binary": "00000111010011110010001111011111",
+    "ciphertext_escaped": "\\x07O#\\xDF",
+    "expected_decrypted_hex": "4101"
+  },
+  {
+    "id": "A011",
+    "name": "双重ASCII",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "4AF5",
+      "1234"
+    ],
+    "combined_key_hex": "4AF51234",
+    "combined_key_binary": "01001010111101010001001000110100",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "Double AES",
+    "plaintext_hex": "446F75626C6520414553",
+    "plaintext_binary": "01000100011011110111010101100010011011000110010100100000010000010100010101010011",
+    "plaintext_escaped": "Double AES",
+    "padded_plaintext_hex": "446F75626C65204145530202",
+    "ciphertext_hex": "5FECB2E86DC5244A152D0B2E",
+    "ciphertext_binary": "010111111110110010110010111010000110110111000101001001000100101000010101001011010000101100101110",
+    "ciphertext_escaped": "_\\xEC\\xB2\\xE8m\\xC5$J\\x15-\\x0B.",
+    "expected_decrypted_hex": "446F75626C6520414553"
+  },
+  {
+    "id": "A012",
+    "name": "三重ASCII",
+    "algorithm": "triple_EEE48",
+    "keys_hex": [
+      "4AF5",
+      "1234",
+      "ABCD"
+    ],
+    "combined_key_hex": "4AF51234ABCD",
+    "combined_key_binary": "010010101111010100010010001101001010101111001101",
+    "padding": "PKCS7_2bytes",
+    "plaintext_text": "Triple S-AES",
+    "plaintext_hex": "547269706C6520532D414553",
+    "plaintext_binary": "010101000111001001101001011100000110110001100101001000000101001100101101010000010100010101010011",
+    "plaintext_escaped": "Triple S-AES",
+    "padded_plaintext_hex": "547269706C6520532D4145530202",
+    "ciphertext_hex": "17DBE953C789BC3F1526127E7E18",
+    "ciphertext_binary": "0001011111011011111010010101001111000111100010011011110000111111000101010010011000010010011111100111111000011000",
+    "ciphertext_escaped": "\\x17\\xDB\\xE9S\\xC7\\x89\\xBC?\\x15&\\x12~~\\x18",
+    "expected_decrypted_hex": "547269706C6520532D414553"
+  }
+]

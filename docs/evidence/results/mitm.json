@@ -4,7 +4,7 @@
     "total": 131072,
     "first_pair_matches": 65470,
     "distinct_intermediates": 41510,
-    "elapsed": 0.17710360000000946,
+    "elapsed": 0.1929640999987896,
     "completed": true,
     "pairs": [
       [
@@ -22,7 +22,7 @@
     "total": 131072,
     "first_pair_matches": 65470,
     "distinct_intermediates": 41510,
-    "elapsed": 0.2096094999997149,
+    "elapsed": 0.22327509999922768,
     "completed": true,
     "pairs": [
       [
@@ -44,7 +44,7 @@
     "total": 131072,
     "first_pair_matches": 65470,
     "distinct_intermediates": 41510,
-    "elapsed": 0.19994520000000193,
+    "elapsed": 0.21920200000022305,
     "completed": true,
     "pairs": [
       [

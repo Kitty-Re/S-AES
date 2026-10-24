@@ -1,0 +1,154 @@
+[
+  {
+    "id": "D001",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "4AF5",
+      "1234"
+    ],
+    "combined_key_hex": "4AF51234",
+    "combined_key_binary": "01001010111101010001001000110100",
+    "plaintext_hex": "D728",
+    "plaintext_binary": "1101011100101000",
+    "ciphertext_hex": "4A90",
+    "ciphertext_binary": "0100101010010000",
+    "stage_ciphertext_hex": [
+      "24EC",
+      "4A90"
+    ],
+    "expected_decrypted_hex": "D728"
+  },
+  {
+    "id": "D002",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "1234",
+      "ABCD"
+    ],
+    "combined_key_hex": "1234ABCD",
+    "combined_key_binary": "00010010001101001010101111001101",
+    "plaintext_hex": "D728",
+    "plaintext_binary": "1101011100101000",
+    "ciphertext_hex": "73A7",
+    "ciphertext_binary": "0111001110100111",
+    "stage_ciphertext_hex": [
+      "7BB8",
+      "73A7"
+    ],
+    "expected_decrypted_hex": "D728"
+  },
+  {
+    "id": "D003",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "0000",
+      "0000"
+    ],
+    "combined_key_hex": "00000000",
+    "combined_key_binary": "00000000000000000000000000000000",
+    "plaintext_hex": "0000",
+    "plaintext_binary": "0000000000000000",
+    "ciphertext_hex": "4AB9",
+    "ciphertext_binary": "0100101010111001",
+    "stage_ciphertext_hex": [
+      "071E",
+      "4AB9"
+    ],
+    "expected_decrypted_hex": "0000"
+  },
+  {
+    "id": "D004",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "FFFF",
+      "FFFF"
+    ],
+    "combined_key_hex": "FFFFFFFF",
+    "combined_key_binary": "11111111111111111111111111111111",
+    "plaintext_hex": "FFFF",
+    "plaintext_binary": "1111111111111111",
+    "ciphertext_hex": "7AB5",
+    "ciphertext_binary": "0111101010110101",
+    "stage_ciphertext_hex": [
+      "5343",
+      "7AB5"
+    ],
+    "expected_decrypted_hex": "FFFF"
+  },
+  {
+    "id": "D005",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "0001",
+      "8000"
+    ],
+    "combined_key_hex": "00018000",
+    "combined_key_binary": "00000000000000011000000000000000",
+    "plaintext_hex": "0001",
+    "plaintext_binary": "0000000000000001",
+    "ciphertext_hex": "363C",
+    "ciphertext_binary": "0011011000111100",
+    "stage_ciphertext_hex": [
+      "CE07",
+      "363C"
+    ],
+    "expected_decrypted_hex": "0001"
+  },
+  {
+    "id": "D006",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "5555",
+      "AAAA"
+    ],
+    "combined_key_hex": "5555AAAA",
+    "combined_key_binary": "01010101010101011010101010101010",
+    "plaintext_hex": "AAAA",
+    "plaintext_binary": "1010101010101010",
+    "ciphertext_hex": "6CEF",
+    "ciphertext_binary": "0110110011101111",
+    "stage_ciphertext_hex": [
+      "646B",
+      "6CEF"
+    ],
+    "expected_decrypted_hex": "AAAA"
+  },
+  {
+    "id": "D007",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "2D55",
+      "4AF5"
+    ],
+    "combined_key_hex": "2D554AF5",
+    "combined_key_binary": "00101101010101010100101011110101",
+    "plaintext_hex": "6F6B",
+    "plaintext_binary": "0110111101101011",
+    "ciphertext_hex": "BEC2",
+    "ciphertext_binary": "1011111011000010",
+    "stage_ciphertext_hex": [
+      "D170",
+      "BEC2"
+    ],
+    "expected_decrypted_hex": "6F6B"
+  },
+  {
+    "id": "D008",
+    "algorithm": "double_EE32",
+    "keys_hex": [
+      "ABCD",
+      "1234"
+    ],
+    "combined_key_hex": "ABCD1234",
+    "combined_key_binary": "10101011110011010001001000110100",
+    "plaintext_hex": "1234",
+    "plaintext_binary": "0001001000110100",
+    "ciphertext_hex": "B726",
+    "ciphertext_binary": "1011011100100110",
+    "stage_ciphertext_hex": [
+      "AB86",
+      "B726"
+    ],
+    "expected_decrypted_hex": "1234"
+  }
+]

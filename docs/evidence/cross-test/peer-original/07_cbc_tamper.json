@@ -1,0 +1,288 @@
+[
+  {
+    "id": "X001",
+    "name": "翻转首分组最低位",
+    "base_case_id": "C001",
+    "operation": "flip_ciphertext_bit",
+    "ciphertext_block_1based": 1,
+    "bit_index_lsb0": 0,
+    "replacement_hex": null,
+    "key_hex": "2D55",
+    "padding": "none",
+    "original_iv_hex": "CAFE",
+    "modified_iv_hex": "CAFE",
+    "original_ciphertext_hex": "1515D57297776771",
+    "modified_ciphertext_hex": "1514D57297776771",
+    "original_raw_plaintext_hex": "4142434445464748",
+    "expected_raw_plaintext_hex": "6149434545464748",
+    "expected_raw_plaintext_escaped": "aICEEFGH",
+    "expected_pkcs7_status": "not_used",
+    "expected_decrypted_hex": "6149434545464748",
+    "expected_affected_blocks": [
+      1,
+      2
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "6149",
+        "xor_difference_hex": "200B"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "4345",
+        "xor_difference_hex": "0001"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "4546",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "4748",
+        "xor_difference_hex": "0000"
+      }
+    ]
+  },
+  {
+    "id": "X002",
+    "name": "翻转第二分组最低位",
+    "base_case_id": "C001",
+    "operation": "flip_ciphertext_bit",
+    "ciphertext_block_1based": 2,
+    "bit_index_lsb0": 0,
+    "replacement_hex": null,
+    "key_hex": "2D55",
+    "padding": "none",
+    "original_iv_hex": "CAFE",
+    "modified_iv_hex": "CAFE",
+    "original_ciphertext_hex": "1515D57297776771",
+    "modified_ciphertext_hex": "1515D57397776771",
+    "original_raw_plaintext_hex": "4142434445464748",
+    "expected_raw_plaintext_hex": "4142334D45474748",
+    "expected_raw_plaintext_escaped": "AB3MEGGH",
+    "expected_pkcs7_status": "not_used",
+    "expected_decrypted_hex": "4142334D45474748",
+    "expected_affected_blocks": [
+      2,
+      3
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "4142",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "334D",
+        "xor_difference_hex": "7009"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "4547",
+        "xor_difference_hex": "0001"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "4748",
+        "xor_difference_hex": "0000"
+      }
+    ]
+  },
+  {
+    "id": "X003",
+    "name": "替换第二分组为0000",
+    "base_case_id": "C001",
+    "operation": "replace_ciphertext_block",
+    "ciphertext_block_1based": 2,
+    "bit_index_lsb0": null,
+    "replacement_hex": "0000",
+    "key_hex": "2D55",
+    "padding": "none",
+    "original_iv_hex": "CAFE",
+    "modified_iv_hex": "CAFE",
+    "original_ciphertext_hex": "1515D57297776771",
+    "modified_ciphertext_hex": "1515000097776771",
+    "original_raw_plaintext_hex": "4142434445464748",
+    "expected_raw_plaintext_hex": "4142A46890344748",
+    "expected_raw_plaintext_escaped": "AB\\xA4h\\x904GH",
+    "expected_pkcs7_status": "not_used",
+    "expected_decrypted_hex": "4142A46890344748",
+    "expected_affected_blocks": [
+      2,
+      3
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "4142",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "A468",
+        "xor_difference_hex": "E72C"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "9034",
+        "xor_difference_hex": "D572"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "4748",
+        "xor_difference_hex": "0000"
+      }
+    ]
+  },
+  {
+    "id": "X004",
+    "name": "翻转最后分组最低位",
+    "base_case_id": "C001",
+    "operation": "flip_ciphertext_bit",
+    "ciphertext_block_1based": 4,
+    "bit_index_lsb0": 0,
+    "replacement_hex": null,
+    "key_hex": "2D55",
+    "padding": "none",
+    "original_iv_hex": "CAFE",
+    "modified_iv_hex": "CAFE",
+    "original_ciphertext_hex": "1515D57297776771",
+    "modified_ciphertext_hex": "1515D57297776770",
+    "original_raw_plaintext_hex": "4142434445464748",
+    "expected_raw_plaintext_hex": "414243444546C742",
+    "expected_raw_plaintext_escaped": "ABCDEF\\xC7B",
+    "expected_pkcs7_status": "not_used",
+    "expected_decrypted_hex": "414243444546C742",
+    "expected_affected_blocks": [
+      4
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "4142",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "4344",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "4546",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "C742",
+        "xor_difference_hex": "800A"
+      }
+    ]
+  },
+  {
+    "id": "X005",
+    "name": "翻转IV最低位",
+    "base_case_id": "C001",
+    "operation": "flip_iv_bit",
+    "ciphertext_block_1based": null,
+    "bit_index_lsb0": 0,
+    "replacement_hex": null,
+    "key_hex": "2D55",
+    "padding": "none",
+    "original_iv_hex": "CAFE",
+    "modified_iv_hex": "CAFF",
+    "original_ciphertext_hex": "1515D57297776771",
+    "modified_ciphertext_hex": "1515D57297776771",
+    "original_raw_plaintext_hex": "4142434445464748",
+    "expected_raw_plaintext_hex": "4143434445464748",
+    "expected_raw_plaintext_escaped": "ACCDEFGH",
+    "expected_pkcs7_status": "not_used",
+    "expected_decrypted_hex": "4143434445464748",
+    "expected_affected_blocks": [
+      1
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "4143",
+        "xor_difference_hex": "0001"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "4344",
+        "modified_plaintext_hex": "4344",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 3,
+        "original_plaintext_hex": "4546",
+        "modified_plaintext_hex": "4546",
+        "xor_difference_hex": "0000"
+      },
+      {
+        "block_1based": 4,
+        "original_plaintext_hex": "4748",
+        "modified_plaintext_hex": "4748",
+        "xor_difference_hex": "0000"
+      }
+    ]
+  },
+  {
+    "id": "X006",
+    "name": "破坏最后分组填充",
+    "base_case_id": "C008",
+    "operation": "flip_ciphertext_bit",
+    "ciphertext_block_1based": 1,
+    "bit_index_lsb0": 0,
+    "replacement_hex": null,
+    "key_hex": "2D55",
+    "padding": "PKCS7_2bytes",
+    "original_iv_hex": "CAFE",
+    "modified_iv_hex": "CAFE",
+    "original_ciphertext_hex": "151555F6",
+    "modified_ciphertext_hex": "151455F6",
+    "original_raw_plaintext_hex": "41420202",
+    "expected_raw_plaintext_hex": "61490203",
+    "expected_raw_plaintext_escaped": "aI\\x02\\x03",
+    "expected_pkcs7_status": "invalid",
+    "expected_decrypted_hex": null,
+    "expected_affected_blocks": [
+      1,
+      2
+    ],
+    "blocks": [
+      {
+        "block_1based": 1,
+        "original_plaintext_hex": "4142",
+        "modified_plaintext_hex": "6149",
+        "xor_difference_hex": "200B"
+      },
+      {
+        "block_1based": 2,
+        "original_plaintext_hex": "0202",
+        "modified_plaintext_hex": "0203",
+        "xor_difference_hex": "0001"
+      }
+    ]
+  }
+]

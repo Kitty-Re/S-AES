@@ -165,6 +165,20 @@ IV 为四位 HEX，padding 是 `PKCS7-2` 或 `none`。数据包不包含密钥�
 
 `checks.run_checks(exhaustive=False,progress=None,cancel=None)` 返回 `CheckResult(rows,checked,elapsed,completed)`；rows 包含名称、实际、期望和通过状态。可选固定密钥下全部分组往返。完整测试另由 unittest 执行。
 
+### 他组数据包验证
+
+`tools/verify_cross_test.py` 提供 `run_bundle(source=SOURCE,output=None)`，返回 `(summary,rows)`。source 是含原始 manifest 的数据目录；output 非 None 时写入适配 CSV、220 行模板回填结果、基础逐条结果、详细 JSON、统计 JSON 及两个 MITM 候选文件。没有 output 时不写文件，供回归测试调用。
+
+`verify_manifest(source)` 逐字节检查 13 个原始文件，拒绝重复名称、目录穿越和哈希不一致；仓库对 `peer-original/**` 禁用换行转换，以保持与 ZIP 完全相同。脚本仅读取数据，不执行数据包内容。原包发送说明及自检记录原样保存，当前实测写入独立文件。
+
+基础数据同时核对 CSV / GUI JSON 的位串、三轮密钥、加密、直接解密对方密文及独立矩阵参考。多重加密比较每一级输出；ASCII 多重消息复合现有公开分组接口，填充只在最外层处理一次。CBC 对比固定 IV 的密文和解密结果。
+
+MITM 以 `(K1,K2)` 升序生成每行 `K1K2` 的 8 位大写 HEX，加一个 LF；ASCII 编码后的 SHA-256 必须与原包相同，不能只比较候选数量。篡改数据将原包的 1 起始分组序号转换为本组 0 起始序号，核对原始解密、逐块 XOR、影响范围及填充损坏状态。非法输入必须由对应公开接口抛出 `ValueError`；其他异常记录为失败，不视为正常拒绝。
+
+每行保留原模板的 case_id、feature、direction、expected，仅回填 actual、status、note。合法空明文的 actual 可以为空，但状态必须为 PASS。组名与个人信息不预填；报告仅声明“本组运行他组数据”，不推断对方已执行本组向量。
+
+GUI 的交叉表同时显示加密与解密结果，`last_checks` 保留本次 `CrossCheck` tuple 供截图和回归核对。新增测试覆盖原始包完整性、全部 220 行、MITM 完整集合散列、空输出、篡改输入文件的拒绝及错误计算不得误判 PASS。
+
 ## 8. 后台生命周期、测试与取证
 
 `Worker(QThread)` 只执行服务，使用信号上报进度，在成员中保存结果或异常；`TaskPanel` 在 finished 后读取结果、释放线程并恢复按钮。服务回调在工作线程内执行，不直接操作 Qt。界面不添加最短加载时间，显示的耗时来自服务计时。
@@ -174,7 +188,9 @@ IV 为四位 HEX，padding 是 `PKCS7-2` 或 `none`。数据包不包含密钥�
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -v
 .\.venv\Scripts\python.exe tools/verify_project.py
+.\.venv\Scripts\python.exe tools/verify_cross_test.py
 .\.venv\Scripts\python.exe tools/capture_screenshots.py
+.\.venv\Scripts\python.exe tools/capture_screenshots.py --peer-only
 $env:QT_SCALE_FACTOR = '1.5'
 .\.venv\Scripts\python.exe tools/gui_probe.py
 Remove-Item Env:QT_SCALE_FACTOR

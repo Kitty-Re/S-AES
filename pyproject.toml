@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "saes-lab"
-version = "1.0.0"
+version = "1.1.0"
 description = "信息安全导论第二次作业：S-AES 实验室"
 requires-python = ">=3.11"
 dependencies = ["PySide6==6.11.1"]

@@ -1,5 +1,6 @@
 {
-  "project_version": "1.0.0",
+  "project_version": "1.1.0",
+  "generated_on": "2026-10-24",
   "environment": {
     "os": "Windows",
     "python": "3.13.7",
@@ -7,11 +8,11 @@
     "qt": "6.11.1"
   },
   "tests": {
-    "count": 49,
+    "count": 56,
     "failures": 0,
     "errors": 0,
     "skipped": 0,
-    "elapsed_seconds": 3.9156213999999636
+    "elapsed_seconds": 5.412659600000552
   },
   "coverage": {
     "all_blocks_one_key": 65536,
@@ -19,8 +20,16 @@
     "independent_reference_pairs": 4096,
     "full_key_block_space_tested": false
   },
-  "cross_group_testing": "deferred_by_user",
+  "cross_group_testing": "passed_peer_dataset",
   "members": [],
+  "cross_test": {
+    "case_total": 119,
+    "result_rows": 220,
+    "passed": 220,
+    "failed": 0,
+    "basic_vectors": 64,
+    "basic_passed": 64
+  },
   "ascii": {
     "plaintext": "This is a test",
     "key_hex": "4AF5",
@@ -60,7 +69,7 @@
       "total": 131072,
       "first_pair_matches": 65470,
       "distinct_intermediates": 41510,
-      "elapsed": 0.17710360000000946,
+      "elapsed": 0.1929640999987896,
       "completed": true,
       "pairs": [
         [
@@ -78,7 +87,7 @@
       "total": 131072,
       "first_pair_matches": 65470,
       "distinct_intermediates": 41510,
-      "elapsed": 0.2096094999997149,
+      "elapsed": 0.22327509999922768,
       "completed": true,
       "pairs": [
         [
@@ -100,7 +109,7 @@
       "total": 131072,
       "first_pair_matches": 65470,
       "distinct_intermediates": 41510,
-      "elapsed": 0.19994520000000193,
+      "elapsed": 0.21920200000022305,
       "completed": true,
       "pairs": [
         [
@@ -137,6 +146,5 @@
       "0000"
     ]
   },
-  "source_pdf_sha256": "26424258801ce7f6d5777e713fa5a1a770668eeff5549eb0cddcb5486668ad0c",
-  "generated_on": "2026-10-24"
+  "source_pdf_sha256": "26424258801ce7f6d5777e713fa5a1a770668eeff5549eb0cddcb5486668ad0c"
 }
