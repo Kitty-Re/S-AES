@@ -21,7 +21,6 @@
     "full_key_block_space_tested": false
   },
   "cross_group_testing": "passed_peer_dataset",
-  "members": [],
   "cross_test": {
     "case_total": 119,
     "result_rows": 220,

@@ -1,6 +1,6 @@
 # S-AES 实验室
 
-信息安全导论第二次作业。依据[作业要求](https://shimo.im/docs/zm1FlCxE3eYCQSSo)与教材[附录 D：简化 AES](docs/reference/README.md)，实现 Python + Qt 桌面程序、自动测试及关卡实验材料。
+本组依据[信息安全导论第二次作业要求](https://shimo.im/docs/zm1FlCxE3eYCQSSo)和教材[附录 D：简化 AES](docs/reference/README.md)，使用 Python + Qt 实现了 S-AES 实验程序，并完成五个关卡的测试与分析。
 
 ## 运行
 
@@ -18,7 +18,7 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe -m saes_app
 ```
 
-实际验证环境：Windows 11、CPython 3.13.7、PySide6 / Qt 6.11.1。核心算法与服务仅依赖标准库；GUI 依赖 PySide6。
+本组在 Windows 11、CPython 3.13.7、PySide6 / Qt 6.11.1 环境下完成验证。核心算法与服务仅依赖标准库，GUI 依赖 PySide6。
 
 ## 功能与完成情况
 
@@ -38,7 +38,7 @@ py -3.13 -m venv .venv
 
 - [通关说明：操作步骤、输入与预期输出](docs/通关说明.md)
 - [用户指南](docs/user-guide.md) · [开发手册与接口](docs/developer-guide.md)
-- [五关测试报告](docs/test-report.md) · [交叉测试状态](docs/cross-test-record.md)
+- [五关测试报告](docs/test-report.md) · [交叉验证报告](docs/cross-test-record.md)
 - [界面设计说明](docs/ui-design.md) · [演示流程](docs/demo-recording.md)
 - [实验材料索引](docs/evidence/README.md) · [作业要求与范围记录](docs/assignment-requirements.md)
 
@@ -58,14 +58,13 @@ py -3.13 -m venv .venv
 .\.venv\Scripts\python.exe tools/capture_screenshots.py
 ```
 
-当前 **56 项自动测试全部通过**。验证包括固定密钥下全部 65,536 个分组、固定分组下全部 65,536 个密钥及 4,096 组独立矩阵实现对照。他组提供的压缩包已原样保存，13 份清单文件 SHA-256 一致，119 个用例对应的 **220 行交叉结果全部通过**。详情见[交叉测试报告](docs/cross-test-record.md)与[实验汇总](docs/evidence/results/summary.json)。
+本组的 **56 项自动测试全部通过**。验证覆盖固定密钥下全部 65,536 个分组、固定分组下全部 65,536 个密钥，以及 4,096 组独立矩阵实现对照。另一组提供的原始数据包已完整归档，清单中 13 个文件的 SHA-256 均一致，119 个用例对应的 **220 行交叉结果全部通过**。详细结果见[交叉验证报告](docs/cross-test-record.md)和[实验汇总](docs/evidence/results/summary.json)。
 
-仓库包含源代码、文档、他组原始数据、本组实测结果与程序截图。小组成员留空。虚拟环境、缓存、个人凭据和本地教材 PDF 不纳入版本管理；测试汇总仅保留复现需要的软件版本。
+本组将源代码、使用说明、算法接口、他组数据、实测结果和程序截图一并整理在本仓库中。虚拟环境、缓存和个人凭据通过忽略规则排除，实验环境记录仅保留复现所需的软件版本。
 
 ## 小组成员
 
 | 姓名 | 学号 |
 |---|---|
-| | |
-| | |
-| | |
+| 王楷睿 | 20240164 |
+| 方裕涵 | 20241352 |

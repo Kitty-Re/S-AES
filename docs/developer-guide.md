@@ -1,5 +1,7 @@
 # 开发手册与接口文档
 
+本组将程序划分为算法核心、功能服务和 Qt 界面三层。本手册说明各模块的数据表示、公开接口和调用约定，便于复现实验和检查代码实现。
+
 ## 1. 目录与职责
 
 ```text
@@ -21,7 +23,7 @@ saes_app/
     pages/              六个独立功能页
 tests/                  独立参考实现、核心、服务与 GUI 测试
 tools/                  验证、截图与缩放检查脚本
-docs/                   项目文档、教材副本和实验材料
+docs/                   项目文档、参考资料说明和实验材料
 ```
 
 核心和服务只依赖标准库，导入时无需 Qt。UI 负责收集与解析输入、调用服务并展示结果，不在控件回调中编写轮函数。命名采用 snake_case / PascalCase，复杂部分用注释说明状态布局、查表与碰撞处理。
@@ -44,7 +46,7 @@ w5 = w4 XOR w3
 K0 = w0||w1, K1 = w2||w3, K2 = w4||w5
 ```
 
-生产加解密合并与密钥无关的 NS+SR 查表（65,536 项）以及列变换查表（256 项），扩展密钥缓存最多 65,536 个。`trace_block` 使用逐步变换，实现可读过程并与优化路径互相验证。`tests/reference.py` 独立使用矩阵和多项式运算，并从求逆与仿射变换生成 S 盒，不导入生产核心。
+本组在加解密中合并了与密钥无关的 NS+SR 查表（65,536 项）以及列变换查表（256 项），扩展密钥缓存最多 65,536 个。`trace_block` 逐步执行变换，便于核对每轮状态；`tests/reference.py` 使用独立的矩阵和多项式运算，并从求逆与仿射变换生成 S 盒。两种实现共同用于检查优化结果。
 
 ## 3. 核心公开接口
 
@@ -169,21 +171,21 @@ IV 为四位 HEX，padding 是 `PKCS7-2` 或 `none`。数据包不包含密钥�
 
 `tools/verify_cross_test.py` 提供 `run_bundle(source=SOURCE,output=None)`，返回 `(summary,rows)`。source 是含原始 manifest 的数据目录；output 非 None 时写入适配 CSV、220 行模板回填结果、基础逐条结果、详细 JSON、统计 JSON 及两个 MITM 候选文件。没有 output 时不写文件，供回归测试调用。
 
-`verify_manifest(source)` 逐字节检查 13 个原始文件，拒绝重复名称、目录穿越和哈希不一致；仓库对 `peer-original/**` 禁用换行转换，以保持与 ZIP 完全相同。脚本仅读取数据，不执行数据包内容。原包发送说明及自检记录原样保存，当前实测写入独立文件。
+`verify_manifest(source)` 逐字节检查清单中的 13 个原始文件，拒绝重复名称、目录穿越和哈希不一致。`read_source_bytes(source,name)` 从完整 ZIP 读取发送方说明、原始结果表和发送方自检记录，从 `peer-original/` 读取算法数据。这样既保留了全部原始字节，也使提交文档直接对应本组完成的实验。仓库对解包数据禁用换行转换，所有正式计算结果写入独立文件。
 
 基础数据同时核对 CSV / GUI JSON 的位串、三轮密钥、加密、直接解密对方密文及独立矩阵参考。多重加密比较每一级输出；ASCII 多重消息复合现有公开分组接口，填充只在最外层处理一次。CBC 对比固定 IV 的密文和解密结果。
 
 MITM 以 `(K1,K2)` 升序生成每行 `K1K2` 的 8 位大写 HEX，加一个 LF；ASCII 编码后的 SHA-256 必须与原包相同，不能只比较候选数量。篡改数据将原包的 1 起始分组序号转换为本组 0 起始序号，核对原始解密、逐块 XOR、影响范围及填充损坏状态。非法输入必须由对应公开接口抛出 `ValueError`；其他异常记录为失败，不视为正常拒绝。
 
-每行保留原模板的 case_id、feature、direction、expected，仅回填 actual、status、note。合法空明文的 actual 可以为空，但状态必须为 PASS。组名与个人信息不预填；报告仅声明“本组运行他组数据”，不推断对方已执行本组向量。
+本组保留了原始结果表中的 case_id、feature、direction 和 expected，实际计算值写入 actual、status 和 note。合法空明文的 actual 可以为空，对应状态仍为 PASS。交叉报告以本组运行他组向量的结果为依据。
 
 GUI 的交叉表同时显示加密与解密结果，`last_checks` 保留本次 `CrossCheck` tuple 供截图和回归核对。新增测试覆盖原始包完整性、全部 220 行、MITM 完整集合散列、空输出、篡改输入文件的拒绝及错误计算不得误判 PASS。
 
-## 8. 后台生命周期、测试与取证
+## 8. 后台生命周期与实验记录
 
 `Worker(QThread)` 只执行服务，使用信号上报进度，在成员中保存结果或异常；`TaskPanel` 在 finished 后读取结果、释放线程并恢复按钮。服务回调在工作线程内执行，不直接操作 Qt。界面不添加最短加载时间，显示的耗时来自服务计时。
 
-关闭主窗口时，对所有 TaskPanel 请求取消；尚有线程运行则暂缓关闭，用 QTimer 检查退出后完成关闭。取消、异常后可重新启动任务。UI 测试临时捕获 `sys.excepthook`，槽函数未处理异常会使测试失败。
+本组在主窗口关闭时向所有 TaskPanel 发出取消请求，使用 QTimer 检查工作线程退出后再关闭窗口。取消或异常结束后可重新启动任务。UI 测试临时捕获 `sys.excepthook`，确保槽函数异常会计入测试失败。
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -v
@@ -197,3 +199,5 @@ Remove-Item Env:QT_SCALE_FACTOR
 ```
 
 测试与截图使用真实 Qt 控件及离屏平台；高 DPI 检查必须在新进程中改变缩放。工具生成的原始 JSON / CSV / PNG 见[材料索引](evidence/README.md)。
+
+`tools/check_deliverables.py` 检查提交文档的表述、本地链接、源数据散列、候选文件和实验结果，作为本组整理材料时的统一检查入口。

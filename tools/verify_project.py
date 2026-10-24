@@ -123,7 +123,7 @@ def main():
                          "skipped": len(test_result.skipped), "elapsed_seconds": test_elapsed},
                "coverage": {"all_blocks_one_key": 65536, "all_keys_one_block": 65536,
                             "independent_reference_pairs": 4096, "full_key_block_space_tested": False},
-               "cross_group_testing": "passed_peer_dataset", "members": [],
+               "cross_group_testing": "passed_peer_dataset",
                "cross_test": {name: cross_test[name] for name in ("case_total", "result_rows", "passed", "failed", "basic_vectors", "basic_passed")},
                "ascii": ascii_result, "multiple": multiple, "mitm": attacks,
                "cbc": {"iv_hex": "1234", "ciphertext_hex": cbc_cipher.hex(" ").upper(),

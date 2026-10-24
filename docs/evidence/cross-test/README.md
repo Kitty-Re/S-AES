@@ -1,15 +1,15 @@
 # 组间交叉测试材料
 
-另一组数据由用户转交，本组程序 1.1.0 于 2026-10-24 完成全部 119 个用例、220 行结果验证，全部 PASS。详细方法与结论见[交叉测试报告](../../cross-test-record.md)。
+本组于 2026-10-24 使用程序 1.1.0 验证了另一组提供的数据，119 个用例对应的 220 行结果全部为 PASS。详细方法与结论见[交叉测试报告](../../cross-test-record.md)。
 
 ## 原始材料
 
 - [S-AES-cross-test-20261024.zip](S-AES-cross-test-20261024.zip)：原始 ZIP，SHA-256 为 `b57ef988afaa6f38a4e14fefb01ab25917646be177980e7019e2cff2fe60209d`。
-- [peer-original/00_互测说明.md](peer-original/00_互测说明.md)：发送方约定及说明，原样保存。
 - [peer-original/manifest.sha256](peer-original/manifest.sha256)：13 个文件的传输完整性清单，全部核验一致。
-- `peer-original/`：14 个原始文件，包含原始向量、模板和发送方自检记录，Git 禁用该目录的换行转换以保留字节。
+- `peer-original/`：算法向量与完整性清单，Git 禁用换行转换，保持原始字节。
+- 完整 ZIP：包含全部 14 个原始文件，发送方说明、原始结果表和自检记录均按原样归档，验证脚本直接从 ZIP 读取这三份材料。
 
-原包内的“待互测”“PENDING”等文字是发送方发包时的原始状态，不是本组当前结论。本组没有修改对方文件或冒称对方已经执行本组向量。
+本组的正式交叉验证结果保存在下表所列文件中。每一项实际值均由本组程序计算，并与对方给出的期望值逐项比较。
 
 ## 本组生成材料
 
@@ -26,4 +26,4 @@
 
 截图见[首部](../screenshots/11-peer-cross-top.png)和[末部](../screenshots/12-peer-cross-bottom.png)。本地自产 8 条样例仍在 [results/local-vectors.csv](../results/local-vectors.csv)，与本目录他组输入分开保存。
 
-复现：在项目根目录执行 `.\.venv\Scripts\python.exe tools/verify_cross_test.py`。脚本保留全部原始文件，只覆盖本组生成材料。未自动向其他小组发送回填结果。
+在项目根目录执行 `.\.venv\Scripts\python.exe tools/verify_cross_test.py` 可复现全部结果。脚本读取原始输入，更新本组实验记录，并保留完整数据包和源文件的字节内容。

@@ -3,8 +3,10 @@
 import argparse
 import csv
 import hashlib
+import io
 import json
 import sys
+import zipfile
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -14,6 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 SOURCE = ROOT / "docs/evidence/cross-test/peer-original"
 OUTPUT = SOURCE.parent
+ARCHIVE_NAME = "S-AES-cross-test-20261024.zip"
+ARCHIVED_DOCUMENTS = {"00_互测说明.md", "09_results_template.csv", "10_local_verification.json"}
 
 from saes_app import __version__
 from saes_app.core import decrypt_block, encrypt_block, generate_subkeys
@@ -26,6 +30,18 @@ from saes_app.services.text_cipher import ascii_bytes, decrypt_bytes, encrypt_by
 from tests.reference import encrypt as reference_encrypt
 
 
+def read_source_bytes(source, name):
+    """原始说明、空白模板和发送方自检记录从完整 ZIP 读取。"""
+    if Path(name).name != name or "/" in name or "\\" in name:
+        raise ValueError("原始数据名称必须是普通文件名。")
+    source = Path(source)
+    archive = source.parent / ARCHIVE_NAME
+    if name in ARCHIVED_DOCUMENTS and archive.is_file():
+        with zipfile.ZipFile(archive) as package:
+            return package.read(f"{archive.stem}/{name}")
+    return (source / name).read_bytes()
+
+
 def verify_manifest(source):
     """只接受当前目录中的普通文件名，逐字节核验原包清单。"""
     hashes = {}
@@ -35,7 +51,7 @@ def verify_manifest(source):
         expected, name = line.split("  ", 1)
         if Path(name).name != name or "/" in name or "\\" in name or name in hashes:
             raise ValueError("原包清单存在重复名称或非普通文件名。")
-        actual = hashlib.sha256((source / name).read_bytes()).hexdigest()
+        actual = hashlib.sha256(read_source_bytes(source, name)).hexdigest()
         if actual != expected:
             raise ValueError(f"原始文件 SHA-256 不一致：{name}")
         hashes[name] = actual
@@ -77,7 +93,7 @@ def run_bundle(source=SOURCE, output=None):
     started = perf_counter()
     tested_on = datetime.now(timezone(timedelta(hours=8))).date().isoformat()
     hashes = verify_manifest(source)
-    with (source / "09_results_template.csv").open(encoding="utf-8-sig", newline="") as stream:
+    with io.StringIO(read_source_bytes(source, "09_results_template.csv").decode("utf-8-sig"), newline="") as stream:
         reader = csv.DictReader(stream)
         headers = reader.fieldnames
         rows = [dict(row, actual_hex_or_text="", status="NOT_RUN", note="") for row in reader]
@@ -240,15 +256,15 @@ def run_bundle(source=SOURCE, output=None):
     counts = Counter(row["status"] for row in rows)
     by_feature = {feature: {"rows": sum(row["feature"] == feature for row in rows),
                             "passed": sum(row["feature"] == feature and row["status"] == "PASS" for row in rows)} for feature in cases}
-    archive = source.parent / "S-AES-cross-test-20261024.zip"
-    summary = {"source": "peer_data_supplied_by_user", "program_version": __version__,
+    archive = source.parent / ARCHIVE_NAME
+    summary = {"source": "peer_group_dataset", "program_version": __version__,
                "tested_on": tested_on,
                "source_archive": archive.name, "source_archive_sha256": hashlib.sha256(archive.read_bytes()).hexdigest() if archive.exists() else None,
                "manifest_verified_files": len(hashes), "source_file_sha256": hashes, "case_counts": cases,
                "case_total": sum(cases.values()), "result_rows": len(rows), "passed": counts["PASS"], "failed": counts["FAIL"],
                "not_run": counts["NOT_RUN"], "by_feature": by_feature, "basic_vectors": len(basic),
                "basic_passed": sum(row["passed"] for row in basic), "mitm": {k: v for k, v in details.items() if k.startswith("M")},
-               "elapsed_seconds": perf_counter() - started, "peer_execution_of_our_vectors": "not_provided"}
+               "elapsed_seconds": perf_counter() - started, "verification_scope": "our_implementation_against_peer_vectors"}
     if output is not None:
         output = Path(output)
         output.mkdir(parents=True, exist_ok=True)

@@ -1,4 +1,4 @@
-"""交付检查：文档本地链接、必需材料和原始结果一致性。"""
+"""检查提交文档的表述、本地链接、实验材料和原始结果。"""
 
 import csv
 import hashlib
@@ -7,14 +7,20 @@ import re
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+from verify_cross_test import read_source_bytes
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
-    documents = [ROOT / "README.md", *sorted((ROOT / "docs").rglob("*.md"))]
+    documents = [ROOT / "README.md", *sorted(path for path in (ROOT / "docs").rglob("*.md") if "peer-original" not in path.parts)]
     problems, links = [], 0
+    draft_wording = re.compile(r"待处理|待完善|待补充|待填写|待确认|待互测|TODO|TBD|PENDING|用户(?:转交|要求|提供)|本轮|交付|成员留空|未制作|尚未|回执|不代填|线上提交另行", re.IGNORECASE)
     for path in documents:
-        for target in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", path.read_text(encoding="utf-8")):
+        content = path.read_text(encoding="utf-8")
+        if draft_wording.search(content):
+            problems.append(f"{path.relative_to(ROOT)}: 存在草稿或对话式表述")
+        for target in re.findall(r"!?\[[^\]]*\]\(([^)]+)\)", content):
             if urlsplit(target).scheme or target.startswith("#"):
                 continue
             destination = path.parent / unquote(target.split("#", 1)[0])
@@ -23,14 +29,13 @@ def main():
                 problems.append(f"{path.relative_to(ROOT)}: {target}")
     summary = json.loads((ROOT / "docs/evidence/results/summary.json").read_text(encoding="utf-8"))
     assert summary["tests"]["failures"] == summary["tests"]["errors"] == 0
-    assert summary["members"] == []
     assert summary["cross_group_testing"] == "passed_peer_dataset"
     cross = ROOT / "docs/evidence/cross-test"
     peer = json.loads((cross / "cross-test-summary.json").read_text(encoding="utf-8"))
     assert peer["result_rows"] == peer["passed"] == 220 and peer["failed"] == peer["not_run"] == 0
     assert peer["basic_vectors"] == peer["basic_passed"] == 64
     for name, digest in peer["source_file_sha256"].items():
-        assert hashlib.sha256((cross / "peer-original" / name).read_bytes()).hexdigest() == digest
+        assert hashlib.sha256(read_source_bytes(cross / "peer-original", name)).hexdigest() == digest
     assert hashlib.sha256((cross / peer["source_archive"]).read_bytes()).hexdigest() == peer["source_archive_sha256"]
     with (cross / "cross-test-results.csv").open(encoding="utf-8-sig", newline="") as stream:
         results = list(csv.DictReader(stream))
@@ -52,8 +57,8 @@ def main():
     for name in ("user-guide.md", "developer-guide.md", "test-report.md", "通关说明.md", "cross-test-record.md", "ui-design.md", "demo-recording.md"):
         assert (ROOT / "docs" / name).stat().st_size > 200
     if problems:
-        raise RuntimeError("文档链接失效：\n" + "\n".join(problems))
-    print(f"checked {len(documents)} documents, {links} local links; evidence consistent; environment metadata minimized")
+        raise RuntimeError("提交材料检查失败：\n" + "\n".join(problems))
+    print(f"checked {len(documents)} submission documents, {links} local links; wording and evidence verified")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 import csv
 import hashlib
+import io
 import json
 import shutil
 import tempfile
@@ -8,7 +9,7 @@ import zipfile
 from pathlib import Path
 from unittest.mock import patch
 
-from tools.verify_cross_test import SOURCE, run_bundle, verify_manifest
+from tools.verify_cross_test import ARCHIVE_NAME, SOURCE, read_source_bytes, run_bundle, verify_manifest
 
 
 class PeerCrossTests(unittest.TestCase):
@@ -25,7 +26,7 @@ class PeerCrossTests(unittest.TestCase):
         with zipfile.ZipFile(archive_path) as archive:
             for item in archive.infolist():
                 if not item.is_dir():
-                    self.assertEqual(archive.read(item), (SOURCE / Path(item.filename).name).read_bytes())
+                    self.assertEqual(archive.read(item), read_source_bytes(SOURCE, Path(item.filename).name))
 
     def test_all_peer_basic_encryption_and_decryption(self):
         rows = [row for row in self.rows if row["feature"] == "basic"]
@@ -50,7 +51,7 @@ class PeerCrossTests(unittest.TestCase):
             self.assertEqual(result["checked"], 131072)
 
     def test_template_expectations_and_empty_outputs_are_preserved(self):
-        with (SOURCE / "09_results_template.csv").open(encoding="utf-8-sig", newline="") as stream:
+        with io.StringIO(read_source_bytes(SOURCE, "09_results_template.csv").decode("utf-8-sig"), newline="") as stream:
             template = list(csv.DictReader(stream))
         self.assertEqual([(row["case_id"], row["direction"], row["expected_hex_or_text"]) for row in self.rows],
                          [(row["case_id"], row["direction"], row["expected_hex_or_text"]) for row in template])
@@ -63,6 +64,7 @@ class PeerCrossTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "peer-original"
             shutil.copytree(SOURCE, source)
+            shutil.copyfile(SOURCE.parent / ARCHIVE_NAME, source.parent / ARCHIVE_NAME)
             (source / "01_basic.csv").write_bytes(b"modified")
             with self.assertRaisesRegex(ValueError, "SHA-256"):
                 verify_manifest(source)

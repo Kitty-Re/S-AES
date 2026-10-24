@@ -1,6 +1,6 @@
 # 实验材料索引
 
-所有数值由程序实际运行得到。`results` 为本地实验记录，`cross-test` 为他组原包和本组交叉结果，`screenshots` 为真实 Qt 窗口截图；不同次运行的耗时可以不同。另一组数据的 119 个用例、220 行结果全部通过。
+本组按本地实验、组间交叉验证和界面截图整理了全部材料。`results` 保存算法实验记录，`cross-test` 保存他组原包和本组交叉结果，`screenshots` 保存实际 Qt 窗口截图。另一组数据的 119 个用例、220 行结果全部通过。
 
 ## 测试与本地参考
 
@@ -10,7 +10,7 @@
 | [unittest.txt](results/unittest.txt) | 56 项完整测试原始输出 |
 | [binary-trace.json](results/binary-trace.json) | A749 / 2D55 的轮密钥与逐步状态 |
 | [local-vectors.csv](results/local-vectors.csv) | 本地生成 8 条 16 位向量，供交换工具自测 |
-| [independent-reference.csv](results/independent-reference.csv) | 同 8 条向量的生产实现与独立参考对照 |
+| [independent-reference.csv](results/independent-reference.csv) | 同 8 条向量的本组算法与独立参考对照 |
 | [ascii.json](results/ascii.json) | ASCII 样例、填充、密文及恢复结果 |
 | [multiple.json](results/multiple.json) | 双重与两种三重的密钥、密文、恢复结果 |
 
@@ -18,7 +18,7 @@
 
 | 文件 | 内容 |
 |---|---|
-| [原始压缩包](cross-test/S-AES-cross-test-20261024.zip) | 用户转交的他组数据，按原字节保存 |
+| [原始压缩包](cross-test/S-AES-cross-test-20261024.zip) | 另一组提供的完整数据包，按原字节保存 |
 | [原始清单](cross-test/peer-original/manifest.sha256) | 13 份原始文件的 SHA-256 |
 | [peer-vectors-import.csv](cross-test/peer-vectors-import.csv) | 64 组基础数据，保留原位串及行顺序 |
 | [basic-cross-results.csv](cross-test/basic-cross-results.csv) | 64 组实际密文、恢复明文、独立参考与轮密钥一致性 |
@@ -29,7 +29,7 @@
 | [M002-candidates.txt](cross-test/M002-candidates.txt) | 三对数据的唯一候选 1234ABCD |
 | [ui-evidence.json](cross-test/ui-evidence.json) | 真实 Qt 按钮导入后，全部 64 行加密与解密显示核验 |
 
-原包说明、数据和未填写模板保存在 `cross-test/peer-original/`，本组结果独立保存，不覆盖他组原文件。详细结论见[交叉测试报告](../cross-test-record.md)。
+本组将对方完整原包保存在 ZIP 中，算法输入和清单保存在 `cross-test/peer-original/`，正式实验结果单独存放。对方说明、原始结果表和自检记录通过 ZIP 原样归档，详细结论见[交叉测试报告](../cross-test-record.md)。
 
 ## 中间相遇
 
@@ -86,4 +86,4 @@ $env:QT_SCALE_FACTOR = '2'
 Remove-Item Env:QT_SCALE_FACTOR
 ```
 
-重跑只覆盖本组生成材料，保留他组原包及 `peer-original` 的字节内容；时间会变化，文档中的交付时计时不会自动改写。教材获取及本地副本说明见 [reference](../reference/README.md)。全部他组文件说明见 [cross-test/README.md](cross-test/README.md)。
+复现实验会更新本组生成的记录，原始数据包和算法输入保持不变。本文所列计时来自本次实验，重复运行时可根据输出核对实际耗时。参考资料见 [reference](../reference/README.md)，他组数据与结果说明见 [cross-test/README.md](cross-test/README.md)。
