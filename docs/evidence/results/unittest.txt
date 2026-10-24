@@ -1,0 +1,54 @@
+test_all_blocks_are_a_permutation_and_round_trip (tests.test_core.CoreTests.test_all_blocks_are_a_permutation_and_round_trip) ... ok
+test_all_field_products_against_polynomial_reference (tests.test_core.CoreTests.test_all_field_products_against_polynomial_reference) ... ok
+test_appendix_key_schedule (tests.test_core.CoreTests.test_appendix_key_schedule) ... ok
+test_appendix_transform_examples (tests.test_core.CoreTests.test_appendix_transform_examples) ... ok
+test_every_column_inverse (tests.test_core.CoreTests.test_every_column_inverse) ... ok
+test_every_key_round_trip (tests.test_core.CoreTests.test_every_key_round_trip) ... ok
+test_fixed_vectors (tests.test_core.CoreTests.test_fixed_vectors) ... ok
+test_independent_matrix_reference_4096_pairs (tests.test_core.CoreTests.test_independent_matrix_reference_4096_pairs) ... ok
+test_sbox_from_field_inverse_and_affine_map (tests.test_core.CoreTests.test_sbox_from_field_inverse_and_affine_map) ... ok
+test_strict_validation_including_cached_bool (tests.test_core.CoreTests.test_strict_validation_including_cached_bool) ... ok
+test_trace_matches_optimized_path (tests.test_core.CoreTests.test_trace_matches_optimized_path) ... ok
+test_transform_inverses_all_states (tests.test_core.CoreTests.test_transform_inverses_all_states) ... ok
+test_attack_validation (tests.test_services.AttackTests.test_attack_validation) ... ok
+test_cancel_before_and_during_table_build (tests.test_services.AttackTests.test_cancel_before_and_during_table_build) ... ok
+test_cancel_during_reverse_search (tests.test_services.AttackTests.test_cancel_during_reverse_search) ... ok
+test_complete_single_pair_retains_collisions (tests.test_services.AttackTests.test_complete_single_pair_retains_collisions) ... ok
+test_contradictory_pairs (tests.test_services.AttackTests.test_contradictory_pairs) ... ok
+test_multiple_pairs_find_unique_example (tests.test_services.AttackTests.test_multiple_pairs_find_unique_example) ... ok
+test_bytes_padding_all_lengths_and_unicode (tests.test_services.CbcTests.test_bytes_padding_all_lengths_and_unicode) ... ok
+test_cbc_formula_and_inverse (tests.test_services.CbcTests.test_cbc_formula_and_inverse) ... ok
+test_invalid_packets_and_inputs (tests.test_services.CbcTests.test_invalid_packets_and_inputs) ... ok
+test_packet_shares_iv_without_key (tests.test_services.CbcTests.test_packet_shares_iv_without_key) ... ok
+test_replacement_last_block_and_iv_changes (tests.test_services.CbcTests.test_replacement_last_block_and_iv_changes) ... ok
+test_xor_tampering_precise_propagation (tests.test_services.CbcTests.test_xor_tampering_precise_propagation) ... ok
+test_csv_local_round_trip_and_reordered_header (tests.test_services.ExchangeAndCheckTests.test_csv_local_round_trip_and_reordered_header) ... ok
+test_csv_row_errors_are_preserved (tests.test_services.ExchangeAndCheckTests.test_csv_row_errors_are_preserved) ... ok
+test_quick_and_exhaustive_checks_and_cancel (tests.test_services.ExchangeAndCheckTests.test_quick_and_exhaustive_checks_and_cancel) ... ok
+test_all_byte_values_in_all_formats (tests.test_services.FormatAndTextTests.test_all_byte_values_in_all_formats) ... ok
+test_ascii_and_odd_byte_errors (tests.test_services.FormatAndTextTests.test_ascii_and_odd_byte_errors) ... ok
+test_ascii_round_trips_and_raw_bytes (tests.test_services.FormatAndTextTests.test_ascii_round_trips_and_raw_bytes) ... ok
+test_big_endian_blocks_and_escaped_cipher (tests.test_services.FormatAndTextTests.test_big_endian_blocks_and_escaped_cipher) ... ok
+test_bits_keep_width_and_reject_invalid (tests.test_services.FormatAndTextTests.test_bits_keep_width_and_reject_invalid) ... ok
+test_invalid_encodings (tests.test_services.FormatAndTextTests.test_invalid_encodings) ... ok
+test_pkcs7_empty_odd_even_and_trailing_zero (tests.test_services.FormatAndTextTests.test_pkcs7_empty_odd_even_and_trailing_zero) ... ok
+test_boundary_values_and_mode_errors (tests.test_services.MultipleTests.test_boundary_values_and_mode_errors) ... ok
+test_explicit_composition_and_inverse (tests.test_services.MultipleTests.test_explicit_composition_and_inverse) ... ok
+test_all_multiple_modes_via_controls (tests.test_ui.UiTests.test_all_multiple_modes_via_controls) ... ok
+test_ascii_errors_and_invalid_format_recovery (tests.test_ui.UiTests.test_ascii_errors_and_invalid_format_recovery) ... ok
+test_ascii_round_trip_and_format_conversion (tests.test_ui.UiTests.test_ascii_round_trip_and_format_conversion) ... ok
+test_attack_background_result_and_export (tests.test_ui.UiTests.test_attack_background_result_and_export) ... ok
+test_attack_cancel_and_invalid_pairs (tests.test_ui.UiTests.test_attack_cancel_and_invalid_pairs) ... ok
+test_background_error_recovery_and_restart (tests.test_ui.UiTests.test_background_error_recovery_and_restart) ... ok
+test_binary_buttons_trace_and_copy (tests.test_ui.UiTests.test_binary_buttons_trace_and_copy) ... ok
+test_cbc_controls_tamper_and_packet_exchange (tests.test_ui.UiTests.test_cbc_controls_tamper_and_packet_exchange) ... ok
+test_cbc_invalid_input_and_replacement (tests.test_ui.UiTests.test_cbc_invalid_input_and_replacement) ... ok
+test_checks_and_csv_local_import (tests.test_ui.UiTests.test_checks_and_csv_local_import) ... ok
+test_close_window_cancels_worker_cleanly (tests.test_ui.UiTests.test_close_window_cancels_worker_cleanly) ... ok
+test_compact_layout_all_pages (tests.test_ui.UiTests.test_compact_layout_all_pages) ... ok
+test_keyboard_navigation_enter_and_invalid_input (tests.test_ui.UiTests.test_keyboard_navigation_enter_and_invalid_input) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 3.716s
+
+OK

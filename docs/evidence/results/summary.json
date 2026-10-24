@@ -1,0 +1,142 @@
+{
+  "project_version": "1.0.0",
+  "environment": {
+    "os": "Windows",
+    "python": "3.13.7",
+    "pyside6": "6.11.1",
+    "qt": "6.11.1"
+  },
+  "tests": {
+    "count": 49,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 3.9156213999999636
+  },
+  "coverage": {
+    "all_blocks_one_key": 65536,
+    "all_keys_one_block": 65536,
+    "independent_reference_pairs": 4096,
+    "full_key_block_space_tested": false
+  },
+  "cross_group_testing": "deferred_by_user",
+  "members": [],
+  "ascii": {
+    "plaintext": "This is a test",
+    "key_hex": "4AF5",
+    "padding": "PKCS7-2",
+    "ciphertext_hex": "50 86 C1 5C 1E 3A 22 77 3F 35 50 80 93 64 D3 5D",
+    "restored": "This is a test"
+  },
+  "multiple": [
+    {
+      "mode": "double",
+      "key_bits": "01001010111101010011101010010100",
+      "key_hex": "4AF53A94",
+      "plaintext_hex": "D728",
+      "ciphertext_hex": "B2DD",
+      "restored_hex": "D728"
+    },
+    {
+      "mode": "triple2",
+      "key_bits": "01001010111101010011101010010100",
+      "key_hex": "4AF53A94",
+      "plaintext_hex": "D728",
+      "ciphertext_hex": "CE12",
+      "restored_hex": "D728"
+    },
+    {
+      "mode": "triple3",
+      "key_bits": "010010101111010100111010100101000001001000110100",
+      "key_hex": "4AF53A941234",
+      "plaintext_hex": "D728",
+      "ciphertext_hex": "52E2",
+      "restored_hex": "D728"
+    }
+  ],
+  "mitm": [
+    {
+      "checked": 131072,
+      "total": 131072,
+      "first_pair_matches": 65470,
+      "distinct_intermediates": 41510,
+      "elapsed": 0.17710360000000946,
+      "completed": true,
+      "pairs": [
+        [
+          55080,
+          45789
+        ]
+      ],
+      "pair_count": 1,
+      "candidate_count": 65470,
+      "example_key_present": true,
+      "candidate_csv": "mitm-candidates-1.csv"
+    },
+    {
+      "checked": 131072,
+      "total": 131072,
+      "first_pair_matches": 65470,
+      "distinct_intermediates": 41510,
+      "elapsed": 0.2096094999997149,
+      "completed": true,
+      "pairs": [
+        [
+          55080,
+          45789
+        ],
+        [
+          4660,
+          25007
+        ]
+      ],
+      "pair_count": 2,
+      "candidate_count": 1,
+      "example_key_present": true,
+      "candidate_csv": "mitm-candidates-2.csv"
+    },
+    {
+      "checked": 131072,
+      "total": 131072,
+      "first_pair_matches": 65470,
+      "distinct_intermediates": 41510,
+      "elapsed": 0.19994520000000193,
+      "completed": true,
+      "pairs": [
+        [
+          55080,
+          45789
+        ],
+        [
+          4660,
+          25007
+        ],
+        [
+          43981,
+          51966
+        ]
+      ],
+      "pair_count": 3,
+      "candidate_count": 1,
+      "example_key_present": true,
+      "candidate_csv": "mitm-candidates-3.csv"
+    }
+  ],
+  "cbc": {
+    "iv_hex": "1234",
+    "ciphertext_hex": "E3 34 45 27 48 F2 0F 40 53 57 F4 31 EB 46 1B D1 40 AC",
+    "tamper_plaintext_xor": [
+      "9005",
+      "0001",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000",
+      "0000"
+    ]
+  },
+  "source_pdf_sha256": "26424258801ce7f6d5777e713fa5a1a770668eeff5549eb0cddcb5486668ad0c",
+  "generated_on": "2026-10-24"
+}

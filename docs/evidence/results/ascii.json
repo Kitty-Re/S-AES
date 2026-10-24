@@ -1,0 +1,7 @@
+{
+  "plaintext": "This is a test",
+  "key_hex": "4AF5",
+  "padding": "PKCS7-2",
+  "ciphertext_hex": "50 86 C1 5C 1E 3A 22 77 3F 35 50 80 93 64 D3 5D",
+  "restored": "This is a test"
+}

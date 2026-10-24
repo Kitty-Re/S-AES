@@ -1,0 +1,28 @@
+# Local environments and compiled Python files
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Local credentials, editor state and temporary files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+tmp/
+*.log
+
+# Course reference material stays local
+docs/reference/*.pdf

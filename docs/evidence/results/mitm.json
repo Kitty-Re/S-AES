@@ -1,0 +1,68 @@
+[
+  {
+    "checked": 131072,
+    "total": 131072,
+    "first_pair_matches": 65470,
+    "distinct_intermediates": 41510,
+    "elapsed": 0.17710360000000946,
+    "completed": true,
+    "pairs": [
+      [
+        55080,
+        45789
+      ]
+    ],
+    "pair_count": 1,
+    "candidate_count": 65470,
+    "example_key_present": true,
+    "candidate_csv": "mitm-candidates-1.csv"
+  },
+  {
+    "checked": 131072,
+    "total": 131072,
+    "first_pair_matches": 65470,
+    "distinct_intermediates": 41510,
+    "elapsed": 0.2096094999997149,
+    "completed": true,
+    "pairs": [
+      [
+        55080,
+        45789
+      ],
+      [
+        4660,
+        25007
+      ]
+    ],
+    "pair_count": 2,
+    "candidate_count": 1,
+    "example_key_present": true,
+    "candidate_csv": "mitm-candidates-2.csv"
+  },
+  {
+    "checked": 131072,
+    "total": 131072,
+    "first_pair_matches": 65470,
+    "distinct_intermediates": 41510,
+    "elapsed": 0.19994520000000193,
+    "completed": true,
+    "pairs": [
+      [
+        55080,
+        45789
+      ],
+      [
+        4660,
+        25007
+      ],
+      [
+        43981,
+        51966
+      ]
+    ],
+    "pair_count": 3,
+    "candidate_count": 1,
+    "example_key_present": true,
+    "candidate_csv": "mitm-candidates-3.csv"
+  }
+]

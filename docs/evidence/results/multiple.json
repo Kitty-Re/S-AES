@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "double",
+    "key_bits": "01001010111101010011101010010100",
+    "key_hex": "4AF53A94",
+    "plaintext_hex": "D728",
+    "ciphertext_hex": "B2DD",
+    "restored_hex": "D728"
+  },
+  {
+    "mode": "triple2",
+    "key_bits": "01001010111101010011101010010100",
+    "key_hex": "4AF53A94",
+    "plaintext_hex": "D728",
+    "ciphertext_hex": "CE12",
+    "restored_hex": "D728"
+  },
+  {
+    "mode": "triple3",
+    "key_bits": "010010101111010100111010100101000001001000110100",
+    "key_hex": "4AF53A941234",
+    "plaintext_hex": "D728",
+    "ciphertext_hex": "52E2",
+    "restored_hex": "D728"
+  }
+]

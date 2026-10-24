@@ -1,0 +1,7 @@
+{
+  "algorithm": "S-AES-CBC",
+  "version": 1,
+  "iv": "1234",
+  "padding": "PKCS7-2",
+  "ciphertext_base64": "4zRFJ0jyD0BTV/Qx60Yb0UCs"
+}

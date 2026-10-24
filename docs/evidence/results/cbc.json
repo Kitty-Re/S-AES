@@ -1,0 +1,93 @@
+{
+  "plaintext": "Hello, S-AES CBC!",
+  "key_hex": "4AF5",
+  "iv_hex": "1234",
+  "padding": "PKCS7-2",
+  "ciphertext_hex": "E3 34 45 27 48 F2 0F 40 53 57 F4 31 EB 46 1B D1 40 AC",
+  "restored": "Hello, S-AES CBC!",
+  "tamper_index": 0,
+  "xor_mask": "0001",
+  "rows": [
+    {
+      "index": 0,
+      "ciphertext": 58164,
+      "modified_ciphertext": 58165,
+      "plaintext": 18533,
+      "modified_plaintext": 55392,
+      "xor_difference": 36869,
+      "changed_bits": 4
+    },
+    {
+      "index": 1,
+      "ciphertext": 17703,
+      "modified_ciphertext": 17703,
+      "plaintext": 27756,
+      "modified_plaintext": 27757,
+      "xor_difference": 1,
+      "changed_bits": 1
+    },
+    {
+      "index": 2,
+      "ciphertext": 18674,
+      "modified_ciphertext": 18674,
+      "plaintext": 28460,
+      "modified_plaintext": 28460,
+      "xor_difference": 0,
+      "changed_bits": 0
+    },
+    {
+      "index": 3,
+      "ciphertext": 3904,
+      "modified_ciphertext": 3904,
+      "plaintext": 8275,
+      "modified_plaintext": 8275,
+      "xor_difference": 0,
+      "changed_bits": 0
+    },
+    {
+      "index": 4,
+      "ciphertext": 21335,
+      "modified_ciphertext": 21335,
+      "plaintext": 11585,
+      "modified_plaintext": 11585,
+      "xor_difference": 0,
+      "changed_bits": 0
+    },
+    {
+      "index": 5,
+      "ciphertext": 62513,
+      "modified_ciphertext": 62513,
+      "plaintext": 17747,
+      "modified_plaintext": 17747,
+      "xor_difference": 0,
+      "changed_bits": 0
+    },
+    {
+      "index": 6,
+      "ciphertext": 60230,
+      "modified_ciphertext": 60230,
+      "plaintext": 8259,
+      "modified_plaintext": 8259,
+      "xor_difference": 0,
+      "changed_bits": 0
+    },
+    {
+      "index": 7,
+      "ciphertext": 7121,
+      "modified_ciphertext": 7121,
+      "plaintext": 16963,
+      "modified_plaintext": 16963,
+      "xor_difference": 0,
+      "changed_bits": 0
+    },
+    {
+      "index": 8,
+      "ciphertext": 16556,
+      "modified_ciphertext": 16556,
+      "plaintext": 8449,
+      "modified_plaintext": 8449,
+      "xor_difference": 0,
+      "changed_bits": 0
+    }
+  ]
+}
